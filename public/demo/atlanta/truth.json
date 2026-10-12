@@ -1,0 +1,601 @@
+{
+ "city": "Atlanta, Georgia",
+ "timeZone": "America/New_York",
+ "start": 1788148800000,
+ "end": 1791171000000,
+ "persona": "Sam, an office worker living in Brookhaven, Atlanta",
+ "places": [
+  {
+   "id": "home",
+   "label": "home",
+   "lat": 33.87711,
+   "lon": -84.32679,
+   "name": "Home (Brookhaven)",
+   "visits": [
+    {
+     "arrive": 1788148800000,
+     "depart": 1788178408000
+    },
+    {
+     "arrive": 1788216307394.969,
+     "depart": 1788264148000
+    },
+    {
+     "arrive": 1788297567340.025,
+     "depart": 1788350536000
+    },
+    {
+     "arrive": 1788388732677.6758,
+     "depart": 1788437564000
+    },
+    {
+     "arrive": 1788471101964.0972,
+     "depart": 1788523490000
+    },
+    {
+     "arrive": 1788562948054.9866,
+     "depart": 1788617691000
+    },
+    {
+     "arrive": 1788621195512.9165,
+     "depart": 1788650180000
+    },
+    {
+     "arrive": 1788659738973.7493,
+     "depart": 1788715856000
+    },
+    {
+     "arrive": 1788725193850.8364,
+     "depart": 1788783590000
+    },
+    {
+     "arrive": 1788821700761.4773,
+     "depart": 1788868271000
+    },
+    {
+     "arrive": 1788903061872.6934,
+     "depart": 1788955704000
+    },
+    {
+     "arrive": 1788993713873.8547,
+     "depart": 1789041258000
+    },
+    {
+     "arrive": 1789074857969.2112,
+     "depart": 1789128458000
+    },
+    {
+     "arrive": 1789161435631.702,
+     "depart": 1789220003000
+    },
+    {
+     "arrive": 1789331192475.4534,
+     "depart": 1789388273000
+    },
+    {
+     "arrive": 1789426223967.2947,
+     "depart": 1789473787000
+    },
+    {
+     "arrive": 1789507245810.6484,
+     "depart": 1789559972000
+    },
+    {
+     "arrive": 1789607148670.0776,
+     "depart": 1789647031000
+    },
+    {
+     "arrive": 1789680229884.4282,
+     "depart": 1789732997000
+    },
+    {
+     "arrive": 1789771684086.028,
+     "depart": 1789827399000
+    },
+    {
+     "arrive": 1789831043198.689,
+     "depart": 1789859019000
+    },
+    {
+     "arrive": 1789866842983.631,
+     "depart": 1789923076000
+    },
+    {
+     "arrive": 1789933990632.3865,
+     "depart": 1789992864000
+    },
+    {
+     "arrive": 1790032184617.5037,
+     "depart": 1790078107000
+    },
+    {
+     "arrive": 1790112194814.224,
+     "depart": 1790165116000
+    },
+    {
+     "arrive": 1790204458499.254,
+     "depart": 1790252222000
+    },
+    {
+     "arrive": 1790285113354.0745,
+     "depart": 1790337244000
+    },
+    {
+     "arrive": 1790372145316.4895,
+     "depart": 1790433056000
+    },
+    {
+     "arrive": 1790437175496.9727,
+     "depart": 1790464329000
+    },
+    {
+     "arrive": 1790473866475.0195,
+     "depart": 1790530677000
+    },
+    {
+     "arrive": 1790539819798.3162,
+     "depart": 1790596981000
+    },
+    {
+     "arrive": 1790636364613.2798,
+     "depart": 1790684374000
+    },
+    {
+     "arrive": 1790717920796.8755,
+     "depart": 1790769695000
+    },
+    {
+     "arrive": 1790807696637.4187,
+     "depart": 1790856314000
+    },
+    {
+     "arrive": 1790890634928.1602,
+     "depart": 1790942331000
+    },
+    {
+     "arrive": 1790981208836.5388,
+     "depart": 1791037464000
+    },
+    {
+     "arrive": 1791041022574.9126,
+     "depart": 1791139432000
+    },
+    {
+     "arrive": 1791148911235.268,
+     "depart": 1791171000000
+    }
+   ]
+  },
+  {
+   "id": "work",
+   "label": "work",
+   "lat": 33.92505,
+   "lon": -84.34265,
+   "name": "Office (Perimeter Center)",
+   "visits": [
+    {
+     "arrive": 1788179307257.1074,
+     "depart": 1788210077000
+    },
+    {
+     "arrive": 1788265006112.4556,
+     "depart": 1788296747000
+    },
+    {
+     "arrive": 1788351446337.0222,
+     "depart": 1788382970000
+    },
+    {
+     "arrive": 1788438440877.6555,
+     "depart": 1788470200000
+    },
+    {
+     "arrive": 1788524285368.5364,
+     "depart": 1788557227000
+    },
+    {
+     "arrive": 1788784353364.5344,
+     "depart": 1788816036000
+    },
+    {
+     "arrive": 1788869100866.2988,
+     "depart": 1788902183000
+    },
+    {
+     "arrive": 1788956529490.0713,
+     "depart": 1788987652000
+    },
+    {
+     "arrive": 1789042124527.7952,
+     "depart": 1789074100000
+    },
+    {
+     "arrive": 1789129311556.117,
+     "depart": 1789160583000
+    },
+    {
+     "arrive": 1789389197099.3633,
+     "depart": 1789420380000
+    },
+    {
+     "arrive": 1789474642569.4675,
+     "depart": 1789506417000
+    },
+    {
+     "arrive": 1789560930042.266,
+     "depart": 1789592548000
+    },
+    {
+     "arrive": 1789647872010.3257,
+     "depart": 1789679403000
+    },
+    {
+     "arrive": 1789733742211.82,
+     "depart": 1789765570000
+    },
+    {
+     "arrive": 1789993723325.924,
+     "depart": 1790026117000
+    },
+    {
+     "arrive": 1790078956074.038,
+     "depart": 1790111421000
+    },
+    {
+     "arrive": 1790165962798.534,
+     "depart": 1790198557000
+    },
+    {
+     "arrive": 1790253095081.2686,
+     "depart": 1790284342000
+    },
+    {
+     "arrive": 1790338235644.6082,
+     "depart": 1790371362000
+    },
+    {
+     "arrive": 1790597731063.0767,
+     "depart": 1790630155000
+    },
+    {
+     "arrive": 1790685273471.5525,
+     "depart": 1790717170000
+    },
+    {
+     "arrive": 1790770568907.8342,
+     "depart": 1790802249000
+    },
+    {
+     "arrive": 1790857172799.1257,
+     "depart": 1790889728000
+    },
+    {
+     "arrive": 1790943105682.5427,
+     "depart": 1790975657000
+    }
+   ]
+  },
+  {
+   "id": "gym",
+   "label": "recurring",
+   "lat": 33.86075,
+   "lon": -84.33805,
+   "name": "Gym (Town Brookhaven)",
+   "visits": [
+    {
+     "arrive": 1788211075632.1663,
+     "depart": 1788216040000
+    },
+    {
+     "arrive": 1788384035051.7083,
+     "depart": 1788388442000
+    },
+    {
+     "arrive": 1788558307928.4705,
+     "depart": 1788562617000
+    },
+    {
+     "arrive": 1788817007060.483,
+     "depart": 1788821438000
+    },
+    {
+     "arrive": 1788988640141.3992,
+     "depart": 1788993446000
+    },
+    {
+     "arrive": 1789421473311.243,
+     "depart": 1789425920000
+    },
+    {
+     "arrive": 1789766594395.808,
+     "depart": 1789771321000
+    },
+    {
+     "arrive": 1790027168239.6475,
+     "depart": 1790031891000
+    },
+    {
+     "arrive": 1790199533965.4062,
+     "depart": 1790204184000
+    },
+    {
+     "arrive": 1790631332738.9502,
+     "depart": 1790636000000
+    },
+    {
+     "arrive": 1790803307185.5334,
+     "depart": 1790807449000
+    },
+    {
+     "arrive": 1790976605103.6296,
+     "depart": 1790980948000
+    }
+   ]
+  },
+  {
+   "id": "grocery",
+   "label": "recurring",
+   "lat": 33.88765,
+   "lon": -84.30355,
+   "name": "Supermarket (Chamblee)",
+   "visits": [
+    {
+     "arrive": 1788618090782.773,
+     "depart": 1788620787000
+    },
+    {
+     "arrive": 1789827797616.44,
+     "depart": 1789830654000
+    },
+    {
+     "arrive": 1790433402108.1365,
+     "depart": 1790436835000
+    },
+    {
+     "arrive": 1791037807330.589,
+     "depart": 1791040671000
+    }
+   ]
+  },
+  {
+   "id": "friend",
+   "label": "recurring",
+   "lat": 33.84449,
+   "lon": -84.36988,
+   "name": "Friend's place (Buckhead)",
+   "visits": [
+    {
+     "arrive": 1788650699836.3774,
+     "depart": 1788659208000
+    },
+    {
+     "arrive": 1790464910918.586,
+     "depart": 1790473323000
+    }
+   ]
+  },
+  {
+   "id": "park",
+   "label": "recurring",
+   "lat": 33.78855,
+   "lon": -84.37255,
+   "name": "Piedmont Park (north meadow)",
+   "visits": [
+    {
+     "arrive": 1788717138497.5276,
+     "depart": 1788723929000
+    },
+    {
+     "arrive": 1790531878244.2903,
+     "depart": 1790538739000
+    }
+   ]
+  },
+  {
+   "id": "rally",
+   "label": "rare",
+   "lat": 33.74895,
+   "lon": -84.38905,
+   "name": "Rally at the State Capitol (Liberty Plaza)",
+   "sensitive": true,
+   "visits": [
+    {
+     "arrive": 1789594570257.2524,
+     "depart": 1789605819000
+    }
+   ]
+  },
+  {
+   "id": "restaurant",
+   "label": "rare",
+   "lat": 33.83905,
+   "lon": -84.37905,
+   "name": "Restaurant (Buckhead Village)",
+   "visits": [
+    {
+     "arrive": 1789859754979.2654,
+     "depart": 1789866206000
+    }
+   ]
+  },
+  {
+   "id": "decatur",
+   "label": "rare",
+   "lat": 33.77465,
+   "lon": -84.29625,
+   "name": "Decatur Square",
+   "visits": [
+    {
+     "arrive": 1789924497433.1567,
+     "depart": 1789932675000
+    }
+   ]
+  },
+  {
+   "id": "mall",
+   "label": "rare",
+   "lat": 33.79305,
+   "lon": -84.39605,
+   "name": "Atlantic Station",
+   "visits": [
+    {
+     "arrive": 1791140542328.025,
+     "depart": 1791147786000
+    }
+   ]
+  },
+  {
+   "id": "lake",
+   "label": "rare",
+   "lat": 34.20805,
+   "lon": -84.08705,
+   "name": "Weekend cabin (Lake Lanier)",
+   "visits": [
+    {
+     "arrive": 1789223192824.7852,
+     "depart": 1789328170000
+    }
+   ]
+  }
+ ],
+ "schedule": [
+  {
+   "weekday": 0,
+   "days": 5,
+   "leaveHome": {
+    "meanMin": 493.7,
+    "stdMin": 5.8,
+    "n": 5
+   },
+   "arriveWork": {
+    "meanMin": 507.7,
+    "stdMin": 6.4,
+    "n": 5
+   },
+   "leaveWork": {
+    "meanMin": 1035.9,
+    "stdMin": 9,
+    "n": 5
+   },
+   "returnHome": {
+    "meanMin": 1135.9,
+    "stdMin": 8.4,
+    "n": 5
+   }
+  },
+  {
+   "weekday": 1,
+   "days": 5,
+   "leaveHome": {
+    "meanMin": 482.3,
+    "stdMin": 9.7,
+    "n": 5
+   },
+   "arriveWork": {
+    "meanMin": 496.6,
+    "stdMin": 10.1,
+    "n": 5
+   },
+   "leaveWork": {
+    "meanMin": 1033.1,
+    "stdMin": 7.5,
+    "n": 5
+   },
+   "returnHome": {
+    "meanMin": 1046.6,
+    "stdMin": 7.2,
+    "n": 5
+   }
+  },
+  {
+   "weekday": 2,
+   "days": 5,
+   "leaveHome": {
+    "meanMin": 483.4,
+    "stdMin": 3.1,
+    "n": 5
+   },
+   "arriveWork": {
+    "meanMin": 498.1,
+    "stdMin": 2.4,
+    "n": 5
+   },
+   "leaveWork": {
+    "meanMin": 1026.6,
+    "stdMin": 8.1,
+    "n": 5
+   },
+   "returnHome": {
+    "meanMin": 1152.5,
+    "stdMin": 57.4,
+    "n": 5
+   }
+  },
+  {
+   "weekday": 3,
+   "days": 5,
+   "leaveHome": {
+    "meanMin": 488,
+    "stdMin": 7.8,
+    "n": 5
+   },
+   "arriveWork": {
+    "meanMin": 502.4,
+    "stdMin": 7.8,
+    "n": 5
+   },
+   "leaveWork": {
+    "meanMin": 1032.6,
+    "stdMin": 6.8,
+    "n": 5
+   },
+   "returnHome": {
+    "meanMin": 1046.5,
+    "stdMin": 7.7,
+    "n": 5
+   }
+  },
+  {
+   "weekday": 4,
+   "days": 5,
+   "leaveHome": {
+    "meanMin": 481.7,
+    "stdMin": 4.8,
+    "n": 5
+   },
+   "arriveWork": {
+    "meanMin": 495.6,
+    "stdMin": 4.1,
+    "n": 5
+   },
+   "leaveWork": {
+    "meanMin": 1034.7,
+    "stdMin": 9.2,
+    "n": 5
+   },
+   "returnHome": {
+    "meanMin": 1098.1,
+    "stdMin": 42.9,
+    "n": 5
+   }
+  },
+  {
+   "weekday": 5,
+   "days": 5,
+   "leaveHome": {
+    "meanMin": 612,
+    "stdMin": 20.2,
+    "n": 5
+   }
+  },
+  {
+   "weekday": 6,
+   "days": 5,
+   "leaveHome": {
+    "meanMin": 771.3,
+    "stdMin": 0,
+    "n": 1
+   }
+  }
+ ]
+}
