@@ -1,0 +1,605 @@
+{
+ "city": "Patras, Greece",
+ "timeZone": "Europe/Athens",
+ "start": 1788123600000,
+ "end": 1791145800000,
+ "persona": "Dimitra, who works at the University of Patras and lives in Zarouchleika",
+ "places": [
+  {
+   "id": "home",
+   "label": "home",
+   "lat": 38.2218,
+   "lon": 21.733,
+   "name": "Home (Zarouchleika)",
+   "visits": [
+    {
+     "arrive": 1788123600000,
+     "depart": 1788151427000
+    },
+    {
+     "arrive": 1788182162295.1663,
+     "depart": 1788238348000
+    },
+    {
+     "arrive": 1788273331298.374,
+     "depart": 1788325490000
+    },
+    {
+     "arrive": 1788354646382.806,
+     "depart": 1788411235000
+    },
+    {
+     "arrive": 1788446357777.0232,
+     "depart": 1788497427000
+    },
+    {
+     "arrive": 1788528010988.0571,
+     "depart": 1788593841000
+    },
+    {
+     "arrive": 1788597941674.6362,
+     "depart": 1788631372000
+    },
+    {
+     "arrive": 1788640620190.3252,
+     "depart": 1788688287000
+    },
+    {
+     "arrive": 1788697861232.251,
+     "depart": 1788757000000
+    },
+    {
+     "arrive": 1788792228052.8809,
+     "depart": 1788842784000
+    },
+    {
+     "arrive": 1788878544953.0513,
+     "depart": 1788929004000
+    },
+    {
+     "arrive": 1788959621578.701,
+     "depart": 1789015321000
+    },
+    {
+     "arrive": 1789051607681.4639,
+     "depart": 1789102851000
+    },
+    {
+     "arrive": 1789132835666.681,
+     "depart": 1789199161000
+    },
+    {
+     "arrive": 1789202593383.8997,
+     "depart": 1789313199000
+    },
+    {
+     "arrive": 1789321073146.4812,
+     "depart": 1789361475000
+    },
+    {
+     "arrive": 1789391187337.6736,
+     "depart": 1789448550000
+    },
+    {
+     "arrive": 1789483191476.5063,
+     "depart": 1789534240000
+    },
+    {
+     "arrive": 1789564437929.5884,
+     "depart": 1789572285000
+    },
+    {
+     "arrive": 1789581161052.875,
+     "depart": 1789621545000
+    },
+    {
+     "arrive": 1789657280427.4783,
+     "depart": 1789707921000
+    },
+    {
+     "arrive": 1789737071798.422,
+     "depart": 1789803058000
+    },
+    {
+     "arrive": 1789806551318.466,
+     "depart": 1789842815000
+    },
+    {
+     "arrive": 1789851520943.8352,
+     "depart": 1789894671000
+    },
+    {
+     "arrive": 1789910291175.3914,
+     "depart": 1789967072000
+    },
+    {
+     "arrive": 1790002187164.732,
+     "depart": 1790052865000
+    },
+    {
+     "arrive": 1790087565933.7456,
+     "depart": 1790138137000
+    },
+    {
+     "arrive": 1790169323788.3333,
+     "depart": 1790225815000
+    },
+    {
+     "arrive": 1790262116734.853,
+     "depart": 1790311473000
+    },
+    {
+     "arrive": 1790342075311.7065,
+     "depart": 1790407978000
+    },
+    {
+     "arrive": 1790523290920.661,
+     "depart": 1790571306000
+    },
+    {
+     "arrive": 1790601749062.9055,
+     "depart": 1790657049000
+    },
+    {
+     "arrive": 1790693539379.8203,
+     "depart": 1790743258000
+    },
+    {
+     "arrive": 1790773982487.9832,
+     "depart": 1790830749000
+    },
+    {
+     "arrive": 1790865653141.4639,
+     "depart": 1790917509000
+    },
+    {
+     "arrive": 1790947432541.7996,
+     "depart": 1791012327000
+    },
+    {
+     "arrive": 1791016155259.441,
+     "depart": 1791050738000
+    },
+    {
+     "arrive": 1791060043474.8494,
+     "depart": 1791128183000
+    },
+    {
+     "arrive": 1791136035669.7349,
+     "depart": 1791145800000
+    }
+   ]
+  },
+  {
+   "id": "work",
+   "label": "work",
+   "lat": 38.28692,
+   "lon": 21.7851,
+   "name": "Office (University of Patras, Rio)",
+   "visits": [
+    {
+     "arrive": 1788152567322.7217,
+     "depart": 1788181316000
+    },
+    {
+     "arrive": 1788239590833.479,
+     "depart": 1788267097000
+    },
+    {
+     "arrive": 1788326593917.8188,
+     "depart": 1788353776000
+    },
+    {
+     "arrive": 1788412427732.4497,
+     "depart": 1788440091000
+    },
+    {
+     "arrive": 1788498643266.7502,
+     "depart": 1788527281000
+    },
+    {
+     "arrive": 1788758077051.1846,
+     "depart": 1788786424000
+    },
+    {
+     "arrive": 1788843840125.8486,
+     "depart": 1788872804000
+    },
+    {
+     "arrive": 1788930098627.9597,
+     "depart": 1788958829000
+    },
+    {
+     "arrive": 1789016480316.0881,
+     "depart": 1789045301000
+    },
+    {
+     "arrive": 1789103942659.3164,
+     "depart": 1789131989000
+    },
+    {
+     "arrive": 1789362632436.6511,
+     "depart": 1789390343000
+    },
+    {
+     "arrive": 1789449624010.7915,
+     "depart": 1789477292000
+    },
+    {
+     "arrive": 1789535417363.8813,
+     "depart": 1789563585000
+    },
+    {
+     "arrive": 1789622751729.8687,
+     "depart": 1789650857000
+    },
+    {
+     "arrive": 1789709081645.352,
+     "depart": 1789736214000
+    },
+    {
+     "arrive": 1789968231788.7034,
+     "depart": 1789995509000
+    },
+    {
+     "arrive": 1790053914958.265,
+     "depart": 1790081185000
+    },
+    {
+     "arrive": 1790139227671.7744,
+     "depart": 1790168492000
+    },
+    {
+     "arrive": 1790226821404.3171,
+     "depart": 1790255571000
+    },
+    {
+     "arrive": 1790312751090.043,
+     "depart": 1790341318000
+    },
+    {
+     "arrive": 1790572531894.1062,
+     "depart": 1790600843000
+    },
+    {
+     "arrive": 1790658082257.6206,
+     "depart": 1790686954000
+    },
+    {
+     "arrive": 1790744355800.78,
+     "depart": 1790773085000
+    },
+    {
+     "arrive": 1790832004301.9888,
+     "depart": 1790859978000
+    },
+    {
+     "arrive": 1790918772344.9387,
+     "depart": 1790946666000
+    }
+   ]
+  },
+  {
+   "id": "gym",
+   "label": "recurring",
+   "lat": 38.25976,
+   "lon": 21.7389,
+   "name": "Gym (Agyia)",
+   "visits": [
+    {
+     "arrive": 1788267603423.4875,
+     "depart": 1788272817000
+    },
+    {
+     "arrive": 1788440667066.077,
+     "depart": 1788445879000
+    },
+    {
+     "arrive": 1788786926543.1133,
+     "depart": 1788791655000
+    },
+    {
+     "arrive": 1788873416860.862,
+     "depart": 1788878126000
+    },
+    {
+     "arrive": 1789045892529.1267,
+     "depart": 1789051142000
+    },
+    {
+     "arrive": 1789477844381.192,
+     "depart": 1789482747000
+    },
+    {
+     "arrive": 1789651432032.4924,
+     "depart": 1789656700000
+    },
+    {
+     "arrive": 1789996092766.7842,
+     "depart": 1790001651000
+    },
+    {
+     "arrive": 1790081682635.6729,
+     "depart": 1790087143000
+    },
+    {
+     "arrive": 1790256115069.1973,
+     "depart": 1790261691000
+    },
+    {
+     "arrive": 1790687568731.455,
+     "depart": 1790693134000
+    },
+    {
+     "arrive": 1790860601107.5808,
+     "depart": 1790865185000
+    }
+   ]
+  },
+  {
+   "id": "grocery",
+   "label": "recurring",
+   "lat": 38.2096,
+   "lon": 21.76054,
+   "name": "Supermarket (Perivola)",
+   "visits": [
+    {
+     "arrive": 1788594143427.967,
+     "depart": 1788597578000
+    },
+    {
+     "arrive": 1789199461149.0088,
+     "depart": 1789202314000
+    },
+    {
+     "arrive": 1789803342743.5068,
+     "depart": 1789806230000
+    },
+    {
+     "arrive": 1791012633423.6897,
+     "depart": 1791015741000
+    }
+   ]
+  },
+  {
+   "id": "friend",
+   "label": "recurring",
+   "lat": 38.28038,
+   "lon": 21.76925,
+   "name": "Friend's place (Proastio)",
+   "visits": [
+    {
+     "arrive": 1788632069245.108,
+     "depart": 1788640031000
+    },
+    {
+     "arrive": 1791051422976.4697,
+     "depart": 1791059416000
+    }
+   ]
+  },
+  {
+   "id": "park",
+   "label": "recurring",
+   "lat": 38.28167,
+   "lon": 21.74954,
+   "name": "Plaz (seafront walk)",
+   "visits": [
+    {
+     "arrive": 1789313849876.105,
+     "depart": 1789320384000
+    },
+    {
+     "arrive": 1791128947363.5117,
+     "depart": 1791135385000
+    }
+   ]
+  },
+  {
+   "id": "rally",
+   "label": "rare",
+   "lat": 38.24623,
+   "lon": 21.73511,
+   "name": "Rally at Plateia Georgiou A’",
+   "sensitive": true,
+   "visits": [
+    {
+     "arrive": 1789572632339.6926,
+     "depart": 1789580790000
+    }
+   ]
+  },
+  {
+   "id": "restaurant",
+   "label": "rare",
+   "lat": 38.3114,
+   "lon": 21.78129,
+   "name": "Taverna by Rio castle",
+   "visits": [
+    {
+     "arrive": 1789843909098.7295,
+     "depart": 1789850581000
+    }
+   ]
+  },
+  {
+   "id": "beach",
+   "label": "rare",
+   "lat": 38.32635,
+   "lon": 21.87496,
+   "name": "Beach (Psathopyrgos)",
+   "visits": [
+    {
+     "arrive": 1789895956994.4976,
+     "depart": 1789909072000
+    }
+   ]
+  },
+  {
+   "id": "winery",
+   "label": "rare",
+   "lat": 38.19643,
+   "lon": 21.77143,
+   "name": "Achaia Clauss winery",
+   "visits": [
+    {
+     "arrive": 1788688929542.6125,
+     "depart": 1788697274000
+    }
+   ]
+  },
+  {
+   "id": "nafpaktos",
+   "label": "rare",
+   "lat": 38.39261,
+   "lon": 21.82874,
+   "name": "Weekend away (Nafpaktos)",
+   "visits": [
+    {
+     "arrive": 1790409846794.339,
+     "depart": 1790521164000
+    }
+   ]
+  }
+ ],
+ "schedule": [
+  {
+   "weekday": 0,
+   "days": 5,
+   "leaveHome": {
+    "meanMin": 474.3,
+    "stdMin": 6.8,
+    "n": 5
+   },
+   "arriveWork": {
+    "meanMin": 493.5,
+    "stdMin": 6.9,
+    "n": 5
+   },
+   "leaveWork": {
+    "meanMin": 961.5,
+    "stdMin": 5.6,
+    "n": 5
+   },
+   "returnHome": {
+    "meanMin": 1011.7,
+    "stdMin": 45.3,
+    "n": 5
+   }
+  },
+  {
+   "weekday": 1,
+   "days": 5,
+   "leaveHome": {
+    "meanMin": 472,
+    "stdMin": 6.5,
+    "n": 5
+   },
+   "arriveWork": {
+    "meanMin": 490.2,
+    "stdMin": 6.8,
+    "n": 5
+   },
+   "leaveWork": {
+    "meanMin": 957.8,
+    "stdMin": 7.5,
+    "n": 5
+   },
+   "returnHome": {
+    "meanMin": 1060.6,
+    "stdMin": 6.8,
+    "n": 5
+   }
+  },
+  {
+   "weekday": 2,
+   "days": 5,
+   "leaveHome": {
+    "meanMin": 467.1,
+    "stdMin": 10.1,
+    "n": 5
+   },
+   "arriveWork": {
+    "meanMin": 485.6,
+    "stdMin": 10.3,
+    "n": 5
+   },
+   "leaveWork": {
+    "meanMin": 959.2,
+    "stdMin": 1.9,
+    "n": 5
+   },
+   "returnHome": {
+    "meanMin": 973.4,
+    "stdMin": 1.5,
+    "n": 5
+   }
+  },
+  {
+   "weekday": 3,
+   "days": 5,
+   "leaveHome": {
+    "meanMin": 475.6,
+    "stdMin": 7.8,
+    "n": 5
+   },
+   "arriveWork": {
+    "meanMin": 495,
+    "stdMin": 8.2,
+    "n": 5
+   },
+   "leaveWork": {
+    "meanMin": 966,
+    "stdMin": 7.2,
+    "n": 5
+   },
+   "returnHome": {
+    "meanMin": 1070.1,
+    "stdMin": 9.8,
+    "n": 5
+   }
+  },
+  {
+   "weekday": 4,
+   "days": 5,
+   "leaveHome": {
+    "meanMin": 477.3,
+    "stdMin": 8.3,
+    "n": 5
+   },
+   "arriveWork": {
+    "meanMin": 497.3,
+    "stdMin": 7.9,
+    "n": 5
+   },
+   "leaveWork": {
+    "meanMin": 964.9,
+    "stdMin": 5,
+    "n": 5
+   },
+   "returnHome": {
+    "meanMin": 978.1,
+    "stdMin": 4.6,
+    "n": 5
+   }
+  },
+  {
+   "weekday": 5,
+   "days": 5,
+   "leaveHome": {
+    "meanMin": 634.6,
+    "stdMin": 6.9,
+    "n": 5
+   }
+  },
+  {
+   "weekday": 6,
+   "days": 5,
+   "leaveHome": {
+    "meanMin": 744.7,
+    "stdMin": 26.8,
+    "n": 2
+   }
+  }
+ ]
+}

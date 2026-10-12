@@ -42,12 +42,12 @@ export function mountAbout(): { open: () => void } {
         el(
           'li',
           {},
-          `The page can only connect to itself, the map tile server and the public Overpass API (${hosts.join(', ')}). A Content-Security-Policy enforces this — open your browser’s Network tab and check.`,
+          `The page can only connect to itself, the map tile server and the public Overpass API (${hosts.join(', ')}). A Content-Security-Policy enforces this. Open your browser’s Network tab and check.`,
         ),
         el(
           'li',
           {},
-          'Camera and road queries never contain your route. They ask for whole 0.1° grid cells (about 10 km) around it, so the tile server and Overpass only learn roughly which area — about city level — you are looking at.',
+          'Camera and road queries never contain your route. They ask for whole 0.1° grid cells (about 10 km) around it, so the tile server and Overpass only learn roughly which area (about city level) you are looking at.',
         ),
       ),
       el('h3', {}, 'What happens to your track'),
@@ -72,7 +72,7 @@ export function mountAbout(): { open: () => void } {
         el(
           'li',
           {},
-          'Observer: from those reads alone it splits trips (gaps over 20 min), treats the silence between trips as stays near the bracketing cameras, clusters them, and labels Home (overnight), Work (weekday 9–5 on 3+ days), recurring places and rare one-off visits — with the evidence for each.',
+          'Observer: from those reads alone it splits trips (gaps over 20 min), treats the silence between trips as stays near the bracketing cameras, clusters them, and labels Home (overnight), Work (weekdays 9 to 5 on 3 or more days), recurring places and rare one-off visits, with the evidence for each.',
         ),
         el(
           'li',
@@ -88,7 +88,7 @@ export function mountAbout(): { open: () => void } {
           el(
             'li',
             {},
-            el('strong', {}, `${p.short} — ${p.source}. `),
+            el('strong', {}, `${p.short}, ${p.source}. `),
             p.description + ' ',
             p.url
               ? el('a', { href: p.url, target: '_blank', rel: 'noopener noreferrer' }, 'Source')
@@ -113,7 +113,7 @@ export function mountAbout(): { open: () => void } {
         el(
           'li',
           {},
-          'Real systems also record make, model and colour, and share data between agencies — the real picture can be worse.',
+          'Real systems also record make, model and colour, and share data between agencies, so the real picture can be worse.',
         ),
         el('li', {}, 'Use it only on your own data. This is not legal advice.'),
       ),

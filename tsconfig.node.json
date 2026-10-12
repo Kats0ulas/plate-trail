@@ -16,5 +16,5 @@
     "skipLibCheck": true,
     "noEmit": true
   },
-  "include": ["tests", "scripts", "vite.config.ts", "eslint.config.js"]
+  "include": ["tests", "scripts", "vite.config.ts", "vitest.coverage.config.ts", "eslint.config.js"]
 }

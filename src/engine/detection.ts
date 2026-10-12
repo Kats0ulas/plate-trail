@@ -29,7 +29,7 @@ function facesHeading(cam: Camera, headingDeg: number, toleranceDeg: number): bo
 
 /**
  * Vehicle-only filter. A segment counts as driving when it is not faster than a car can go and
- * the vehicle reaches car speed somewhere within ± vehicleWindowMs — so a car crawling past a
+ * the vehicle reaches car speed somewhere within ± vehicleWindowMs. So a car crawling past a
  * camera in traffic is still read, while walking and running (which never reach car speed) are not.
  */
 function drivingSegments(

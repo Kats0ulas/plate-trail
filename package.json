@@ -1,5 +1,5 @@
 {
-  "name": "retention-window",
+  "name": "plate-trail",
   "private": true,
   "version": "0.1.0",
   "description": "What would a license-plate camera network learn about your week, and how much does the data-retention period change that?",
@@ -9,12 +9,12 @@
     "dev": "vite",
     "build": "npm run typecheck && vite build",
     "preview": "vite preview",
-    "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p tsconfig.node.json",
+    "typecheck": "tsc -p tsconfig.json && tsc -p tsconfig.node.json",
     "lint": "eslint .",
-    "format": "prettier --write .",
-    "format:check": "prettier --check .",
+    "format": "prettier -w .",
+    "format:check": "prettier -c .",
     "test": "vitest run",
-    "test:coverage": "vitest run --coverage",
+    "test:coverage": "vitest run -c vitest.coverage.config.ts",
     "demo": "tsx scripts/make-demo.ts"
   },
   "dependencies": {

@@ -45,10 +45,10 @@ const near = cams
   .filter((x) => x.d < (parking ? 450 : 900))
   .sort((a, b) => a.d - b.d)
   .slice(0, parking ? 5 : 5);
-const only = process.argv.find((a) => a.startsWith('--only='));
+const only = process.argv.find((a) => a.startsWith('only='));
 const candidates: LL[] = only
   ? only
-      .slice(7)
+      .slice(5)
       .split(';')
       .map((pair) => pair.split(',').map(Number) as LL)
   : [place.park ?? place.at];

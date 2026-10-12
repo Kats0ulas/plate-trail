@@ -2,10 +2,10 @@
  * Generates the synthetic demo personas: ~5 weeks of continuous driving and walking along
  * real roads, written as one GPX file per day, plus truth.json (what the person really did).
  *
- *   npm run demo                 # both cities
- *   npm run demo -- atlanta      # one city
- *   npm run demo -- --no-osm     # don't touch the OSM camera/junction snapshots
- *   npm run demo -- --refresh-osm  # re-download them even if they cover the track
+ *   npm run demo                         # all cities
+ *   npx tsx scripts/make-demo.ts atlanta     # one city
+ *   npx tsx scripts/make-demo.ts no-osm      # don't touch the OSM camera/junction snapshots
+ *   npx tsx scripts/make-demo.ts refresh-osm # re-download them even if they cover the track
  *
  * Routing uses the public OSRM demo server once per distinct route (cached in scripts/.cache),
  * well within its light-use policy. Nobody's real location data is involved: every place below
@@ -18,6 +18,7 @@ import { haversineM } from '../src/engine/geo';
 import { osrmRoute, type LL, type Route } from './osrm';
 import { DAY, MINUTE, localTime, zonedTimeToUtc } from '../src/engine/time';
 import {
+  cellKey,
   cellsForPoints,
   overpassFetch,
   alprQuery,
@@ -30,6 +31,7 @@ import {
   type JunctionCandidate,
 } from '../src/data/cameras-simulated';
 import type {
+  Camera,
   PlaceLabel,
   ScheduleRow,
   TimeStat,
@@ -39,7 +41,7 @@ import type {
 } from '../src/types';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
-const USER_AGENT = 'retention-window demo generator (one-off, cached)';
+const USER_AGENT = 'plate-trail demo generator (one-off, cached)';
 
 export type PlaceDef = {
   name: string;
@@ -79,7 +81,7 @@ type DayInfo = {
 const START = { y: 2026, m: 8, d: 31 }; // Monday
 const DAYS = 35; // five full weeks, ending Sunday 4 October 2026
 
-// ------------------------------------------------------------------ randomness
+// Randomness
 
 type Rng = {
   next(): number;
@@ -111,7 +113,7 @@ const hm = (h: number, m = 0) => h * 60 + m;
 const jitter = (rng: Rng, base: number, plusMinus: number) =>
   base + Math.round(rng.range(-plusMinus, plusMinus));
 
-// ------------------------------------------------------------------ the personas
+// The personas
 
 const ATLANTA: CityDef = {
   slug: 'atlanta',
@@ -318,9 +320,84 @@ const THESSALONIKI: CityDef = {
   },
 };
 
-export const CITIES = [ATLANTA, THESSALONIKI];
+const PATRAS: CityDef = {
+  slug: 'patras',
+  city: 'Patras, Greece',
+  country: 'GR',
+  timeZone: 'Europe/Athens',
+  cameraMode: 'simulated',
+  persona: 'Dimitra, who works at the University of Patras and lives in Zarouchleika',
+  blurb: 'Hypothetical cameras at every major junction (few ALPRs are mapped in Greece).',
+  places: {
+    home: { name: 'Home (Zarouchleika)', label: 'home', at: [38.2218, 21.733] },
+    work: { name: 'Office (University of Patras, Rio)', label: 'work', at: [38.28692, 21.7851] },
+    gym: { name: 'Gym (Agyia)', label: 'recurring', at: [38.25976, 21.7389] },
+    grocery: { name: 'Supermarket (Perivola)', label: 'recurring', at: [38.2096, 21.76054] },
+    friend: { name: "Friend's place (Proastio)", label: 'recurring', at: [38.28038, 21.76925] },
+    park: { name: 'Plaz (seafront walk)', label: 'recurring', at: [38.28167, 21.74954] },
+    rally: {
+      name: 'Rally at Plateia Georgiou A’',
+      label: 'rare',
+      at: [38.24623, 21.73511],
+      sensitive: true,
+    },
+    restaurant: { name: 'Taverna by Rio castle', label: 'rare', at: [38.3114, 21.78129] },
+    beach: { name: 'Beach (Psathopyrgos)', label: 'rare', at: [38.32635, 21.87496] },
+    winery: { name: 'Achaia Clauss winery', label: 'rare', at: [38.19643, 21.77143] },
+    nafpaktos: { name: 'Weekend away (Nafpaktos)', label: 'rare', at: [38.39261, 21.82874] },
+  },
+  plan(day, rng) {
+    const legs: Leg[] = [];
+    const wd = day.weekday;
+    if (day.iso === '2026-09-26') return [{ to: 'nafpaktos', leave: jitter(rng, hm(10, 30), 10) }];
+    if (day.iso === '2026-09-27') return [{ to: 'home', leave: jitter(rng, hm(18, 0), 15) }];
+    if (wd <= 4) {
+      legs.push({ to: 'work', leave: jitter(rng, hm(7, 50), 15) });
+      const leaveWork = jitter(rng, hm(16, 0), 15);
+      if (day.iso === '2026-09-16') {
+        // The one-off: an evening rally in the city centre, ~18 days before the data ends.
+        legs.push({ to: 'home', leave: leaveWork });
+        legs.push({ to: 'rally', leave: jitter(rng, hm(18, 20), 5) });
+        legs.push({ to: 'home', leave: jitter(rng, hm(20, 45), 5) });
+      } else if (wd === 1 || wd === 3 || (wd === 0 && day.week % 2 === 1)) {
+        legs.push({ to: 'gym', leave: leaveWork });
+        legs.push({ to: 'home', leave: leaveWork + 25 + Math.round(rng.range(60, 80)) });
+      } else {
+        legs.push({ to: 'home', leave: leaveWork });
+      }
+    } else if (wd === 5) {
+      const shop = jitter(rng, hm(10, 30), 20);
+      legs.push(
+        { to: 'grocery', leave: shop },
+        { to: 'home', leave: shop + Math.round(rng.range(50, 65)) },
+      );
+      // (week 3's weekend is the Nafpaktos trip)
+      if (day.week === 0 || day.week === 4) {
+        const t = jitter(rng, hm(21, 0), 10);
+        legs.push({ to: 'friend', leave: t }, { to: 'home', leave: t + 145 });
+      } else if (day.week === 2) {
+        const t = jitter(rng, hm(21, 30), 10);
+        legs.push({ to: 'restaurant', leave: t }, { to: 'home', leave: t + 130 });
+      }
+    } else {
+      if (day.week === 1 || day.week === 4) {
+        const t = jitter(rng, hm(18, 30), 10);
+        legs.push({ to: 'park', leave: t }, { to: 'home', leave: t + 120 });
+      } else if (day.week === 2) {
+        const t = jitter(rng, hm(12, 0), 10);
+        legs.push({ to: 'beach', leave: t }, { to: 'home', leave: t + 240 });
+      } else if (day.week === 0) {
+        const t = jitter(rng, hm(13, 0), 10);
+        legs.push({ to: 'winery', leave: t }, { to: 'home', leave: t + 150 });
+      }
+    }
+    return legs;
+  },
+};
 
-// ------------------------------------------------------------------ track synthesis
+export const CITIES = [ATLANTA, THESSALONIKI, PATRAS];
+
+// Track synthesis
 
 type Stay = { place: string; arrive: number; depart: number };
 
@@ -408,7 +485,9 @@ function dayInfo(index: number): DayInfo {
 
 async function generate(city: CityDef) {
   console.log(`\n${city.city}`);
-  const rng = makeRng(city.slug === 'atlanta' ? 20260831 : 20260901);
+  const rng = makeRng(
+    { atlanta: 20260831, thessaloniki: 20260901, patras: 20260902 }[city.slug] ?? 1,
+  );
   const rec = new Recorder(rng);
   const stays: Stay[] = [];
   const first = dayInfo(0);
@@ -480,13 +559,13 @@ function toGpx(dayKey: string, pts: TrackPoint[]): string {
   );
   return (
     `<?xml version="1.0" encoding="UTF-8"?>\n` +
-    `<gpx version="1.1" creator="retention-window make-demo (synthetic persona, not a real person)" xmlns="http://www.topografix.com/GPX/1/1">\n` +
+    `<gpx version="1.1" creator="plate-trail make-demo (synthetic persona, not a real person)" xmlns="http://www.topografix.com/GPX/1/1">\n` +
     `<metadata><name>Synthetic demo track ${dayKey}</name></metadata>\n` +
     `<trk><name>${dayKey}</name><trkseg>\n${rows.join('\n')}\n</trkseg></trk>\n</gpx>\n`
   );
 }
 
-// ------------------------------------------------------------------ truth.json
+// Truth.json
 
 function stat(values: number[]): TimeStat | undefined {
   if (!values.length) return undefined;
@@ -582,7 +661,7 @@ function buildTruth(city: CityDef, stays: Stay[], startT: number, endT: number):
   };
 }
 
-// ------------------------------------------------------------------ OSM snapshots
+// OSM snapshots
 
 /**
  * Public OSM data for the same coarse cells the app would request for this track, saved so the
@@ -598,7 +677,7 @@ async function snapshotOsm(city: CityDef, points: TrackPoint[], force: boolean) 
       const cams = have('cameras.json');
       const juncs = have('junctions.json');
       if (cells.every((c) => cams.has(c) && juncs.has(c))) {
-        console.log('  OSM snapshot already covers this track (use --refresh-osm to re-download)');
+        console.log('  OSM snapshot already covers this track (add refresh-osm to re-download)');
         return;
       }
     } catch {
@@ -615,23 +694,57 @@ async function snapshotOsm(city: CityDef, points: TrackPoint[], force: boolean) 
   };
   console.log(`  OSM snapshot for ${cells.length} cells`);
 
-  const cameraResp = await overpassFetch(alprQuery(cells), opts);
-  const cameras = camerasFromOverpass(cameraResp);
+  // Every finished query is cached on disk, so a run that the busy public servers cut short
+  // resumes where it stopped instead of starting over.
+  const cacheDir = join(ROOT, 'scripts', '.cache', 'osm-cells');
+  mkdirSync(cacheDir, { recursive: true });
+  const cached = <T>(name: string): T | null => {
+    const f = join(cacheDir, name);
+    return existsSync(f) ? (JSON.parse(readFileSync(f, 'utf8')) as T) : null;
+  };
+  const patiently = async <T>(what: string, run: () => Promise<T>): Promise<T> => {
+    for (let attempt = 1; ; attempt++) {
+      try {
+        return await run();
+      } catch (e) {
+        if (attempt >= 5) throw e;
+        console.log(`    ${what}: ${(e as Error).message.slice(0, 90)}, waiting ${attempt * 30} s`);
+        await new Promise((r) => setTimeout(r, attempt * 30_000));
+      }
+    }
+  };
+
+  const camKey = `alpr-${city.slug}-${cells.length}-${cells[0]}-${cells[cells.length - 1]}.json`;
+  let cameras = cached<Camera[]>(camKey);
+  if (!cameras) {
+    const resp = await patiently('cameras', () => overpassFetch(alprQuery(cells), opts));
+    cameras = camerasFromOverpass(resp);
+    writeFileSync(join(cacheDir, camKey), JSON.stringify(cameras));
+  }
   console.log(`  ${cameras.length} mapped ALPR cameras`);
 
   const junctions: JunctionCandidate[] = [];
   const seen = new Set<number>();
-  // Gentle on the shared servers: a few cells per request.
-  for (let i = 0; i < cells.length; i += 6) {
-    const chunk = cells.slice(i, i + 6);
-    const resp = await overpassFetch(roadsQuery(chunk), opts);
+  // Gentle on the shared servers: three cells per request, each cell cached once done.
+  const todo = cells.filter((c) => !existsSync(join(cacheDir, `roads-${c}.json`)));
+  for (let i = 0; i < todo.length; i += 3) {
+    const chunk = todo.slice(i, i + 3);
+    const resp = await patiently('roads', () => overpassFetch(roadsQuery(chunk), opts));
+    const byCell = new Map<string, JunctionCandidate[]>(chunk.map((c) => [c, []]));
     for (const j of junctionCandidatesFromOverpass(resp))
+      byCell.get(cellKey(j.lat, j.lon))?.push(j);
+    for (const [c, list] of byCell)
+      writeFileSync(join(cacheDir, `roads-${c}.json`), JSON.stringify(list));
+    console.log(
+      `  roads: ${cells.length - todo.length + Math.min(i + 3, todo.length)}/${cells.length} cells`,
+    );
+  }
+  for (const c of cells)
+    for (const j of cached<JunctionCandidate[]>(`roads-${c}.json`) ?? [])
       if (!seen.has(j.id)) {
         seen.add(j.id);
         junctions.push(j);
       }
-    process.stdout.write(`  roads ${Math.min(i + 6, cells.length)}/${cells.length}\r`);
-  }
   junctions.sort((a, b) => a.id - b.id);
   console.log(`\n  ${junctions.length} junction candidates`);
   const fetchedAt = new Date().toISOString();
@@ -651,13 +764,13 @@ async function snapshotOsm(city: CityDef, points: TrackPoint[], force: boolean) 
   );
 }
 
-// ------------------------------------------------------------------ main
+// Main
 
 async function main() {
   const args = process.argv.slice(2);
-  const only = args.filter((a) => !a.startsWith('--'));
-  const skipOsm = args.includes('--no-osm');
-  const forceOsm = args.includes('--refresh-osm');
+  const skipOsm = args.includes('no-osm');
+  const forceOsm = args.includes('refresh-osm');
+  const only = args.filter((a) => a !== 'no-osm' && a !== 'refresh-osm');
   const manifestPath = join(ROOT, 'public', 'demo', 'index.json');
   for (const city of CITIES) {
     if (only.length && !only.includes(city.slug)) continue;

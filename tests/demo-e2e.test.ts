@@ -17,11 +17,11 @@ import { demoCameras, loadDemoFiles, loadManifest, loadTruth } from './load-demo
 
 const p = defaultEngineParams();
 
-/** Deterministic Fisher–Yates shuffle. */
+/** Deterministic Fisher and Yates shuffle. */
 function shuffle<T>(xs: T[]): T[] {
   const a = [...xs];
   let seed = 42;
-  for (let i = a.length - 1; i > 0; i--) {
+  for (let i = a.length - 1; i > 0; i -= 1) {
     seed = (seed * 1103515245 + 12345) % 2147483648;
     const j = seed % (i + 1);
     [a[i], a[j]] = [a[j]!, a[i]!];
@@ -30,7 +30,7 @@ function shuffle<T>(xs: T[]): T[] {
 }
 const HOUR = 3_600_000;
 
-// DEMO=atlanta npx vitest run tests/demo-e2e.test.ts  — run one persona only
+// DEMO=atlanta npx vitest run tests/demo-e2e.test.ts  (runs one persona only)
 const only = process.env.DEMO;
 
 for (const entry of loadManifest().filter((e) => !only || e.slug === only)) {

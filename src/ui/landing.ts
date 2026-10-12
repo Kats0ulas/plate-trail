@@ -3,7 +3,7 @@ import { RETENTION_AS_OF, RETENTION_PRESETS } from '../config/retention';
 import { store } from '../state';
 import { el } from './format';
 
-/** First screen: two sentences, two buttons, and the privacy promise. */
+/** First screen: what the app does in four steps, two buttons, and the privacy promise. */
 export function mountLanding(
   root: HTMLElement,
   openFilePicker: () => void,
@@ -32,11 +32,44 @@ export function mountLanding(
       'aria-modal': 'false',
       'aria-labelledby': 'landing-title',
     },
-    el('h1', { id: 'landing-title' }, 'Retention Window'),
+    el('h1', { id: 'landing-title' }, 'Plate Trail'),
+    el(
+      'p',
+      { class: 'tagline' },
+      'The trail your number plate leaves behind, and how long the cameras keep it.',
+    ),
     el(
       'p',
       { class: 'lead' },
-      'Licence-plate cameras (ALPRs) record every car that drives past. Replay a few weeks of driving through such a network and see what an observer could work out about a life — and how much the data-retention period changes that.',
+      'More and more roads have cameras that read number plates (ALPRs). Every time a car drives past one, the camera saves which car it was, where, and when. Plate Trail shows what those saved records can reveal about a person.',
+    ),
+    el(
+      'ol',
+      { class: 'steps' },
+      el('li', {}, el('strong', {}, 'Pick a sample week'), ' or load your own GPS file.'),
+      el(
+        'li',
+        {},
+        el('strong', {}, 'Watch the drives replay.'),
+        ' Cameras light up when the car passes them.',
+      ),
+      el(
+        'li',
+        {},
+        el('strong', {}, 'See what the records give away:'),
+        ' home, workplace, daily routine and one-off visits, worked out from camera reads alone.',
+      ),
+      el(
+        'li',
+        {},
+        el('strong', {}, 'Change how long records are kept,'),
+        ' from 48 hours to forever, and see how much more a longer period reveals.',
+      ),
+    ),
+    el(
+      'p',
+      { class: 'sim-note' },
+      'It is a simulation: no real camera data and no number plates are used.',
     ),
     el('div', { class: 'landing-actions' }, demoBtn, fileBtn),
     sampleNote,
@@ -46,7 +79,7 @@ export function mountLanding(
     el(
       'p',
       { class: 'fineprint' },
-      `Retention presets (as of ${RETENTION_AS_OF}): ${RETENTION_PRESETS.map((p) => `${p.short} · ${p.source}`).join(' — ')}.`,
+      `Retention periods (as of ${RETENTION_AS_OF}): ${RETENTION_PRESETS.map((p) => `${p.short} (${p.source})`).join(', ')}.`,
     ),
   );
   root.append(card);
@@ -59,7 +92,7 @@ export function mountLanding(
     .then((demos: DemoEntry[]) => {
       const atl = demos.find((d) => d.slug === 'atlanta');
       if (atl)
-        sampleNote.textContent = `The sample: five weeks in the life of ${atl.persona.replace(/^[^,]+, /, 'a synthetic persona — ')}, with the ALPRs really mapped there.`;
+        sampleNote.textContent = `The sample: five weeks of driving by a made-up person (${atl.persona.replace(/^[^,]+, /, '')}), past the licence-plate cameras really mapped there.`;
       const others = demos.filter((d) => d.slug !== 'atlanta');
       if (!others.length) return;
       alt.append('Or: ');

@@ -93,7 +93,7 @@ export function junctionCandidatesFromOverpass(resp: OverpassResponse): Junction
   return findJunctionCandidates(ways, nodes);
 }
 
-// ---------------------------------------------------------------- sampling
+// Sampling
 
 /** Deterministic hash → [0, 1). Same seed and junction id always give the same number. */
 export function seededUnit(seed: number, id: number): number {
@@ -106,7 +106,7 @@ export function seededUnit(seed: number, id: number): number {
 
 export type SimulationOptions = {
   roadClasses: readonly RoadClass[];
-  /** 0–1 */
+  /** 0 to 1 */
   coverage: number;
   minSpacingM: number;
   mergeRadiusM: number;
@@ -201,7 +201,7 @@ export function simulateCameras(
   }));
 }
 
-// ---------------------------------------------------------------- loading
+// Loading
 
 const cache = new CellCache<JunctionCandidate>();
 

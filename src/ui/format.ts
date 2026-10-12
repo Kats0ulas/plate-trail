@@ -12,7 +12,7 @@ export const LABEL_NAMES: Record<PlaceLabel, string> = {
   rare: 'Rare visit',
 };
 
-/** Okabe–Ito colours: distinguishable with the common forms of colour blindness. */
+/** Okabe and Ito colours: distinguishable with the common forms of colour blindness. */
 export const LABEL_COLORS: Record<PlaceLabel, string> = {
   home: '#0072B2',
   work: '#E69F00',

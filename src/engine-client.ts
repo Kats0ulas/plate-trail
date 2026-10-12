@@ -3,7 +3,7 @@ import EngineWorker from './engine/worker?worker';
 
 /** Promise-based client for the engine worker. Later requests of the same type supersede earlier ones. */
 
-const worker = new EngineWorker({ name: 'retention-window-engine' });
+const worker = new EngineWorker({ name: 'plate-trail-engine' });
 let nextId = 1;
 const pending = new Map<number, { resolve: (v: unknown) => void; reject: (e: Error) => void }>();
 const latestByType = new Map<string, number>();

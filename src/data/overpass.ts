@@ -32,7 +32,7 @@ export class OverpassError extends Error {
   }
 }
 
-// ---------------------------------------------------------------- coarse cells
+// Coarse cells
 
 /** Cell key "i,j" where i = floor(lat / cellDeg), j = floor(lon / cellDeg). */
 export function cellKey(lat: number, lon: number, cellDeg = OVERPASS_DEFAULTS.cellDeg): string {
@@ -93,7 +93,7 @@ export function roadsQuery(cells: readonly string[], cellDeg = OVERPASS_DEFAULTS
   return `[out:json][timeout:60];\n(\n${clauses}\n);\nout body;\n>;\nout skel qt;`;
 }
 
-// ---------------------------------------------------------------- fetching
+// Fetching
 
 /** Wait a little longer than the query's own server-side [timeout:N], then move to the next server. */
 export function clientTimeoutMs(query: string): number {
@@ -227,10 +227,10 @@ export async function overpassFetch(
   );
 }
 
-// ---------------------------------------------------------------- per-cell cache
+// Per-cell cache
 
 /**
- * In-memory cache of public data per coarse cell. Only public OSM data goes in here —
+ * In-memory cache of public data per coarse cell. Only public OSM data goes in here,
  * never anything derived from the user's track beyond which cells were asked for.
  */
 export class CellCache<T> {

@@ -3,11 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <!--
-      Privacy by design: the only network requests this page can make are to itself,
-      the OpenFreeMap tile host, and the Overpass API (public OSM camera/road data).
-      Your GPS track never leaves the browser. Keep connect-src locked down.
-    -->
     <meta
       http-equiv="Content-Security-Policy"
       content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://tiles.openfreemap.org https://overpass-api.de https://overpass.kumi.systems https://overpass.private.coffee; worker-src 'self' blob:; child-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'none'"
@@ -19,7 +14,7 @@
     />
     <meta name="color-scheme" content="light" />
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
-    <title>Retention Window</title>
+    <title>Plate Trail: what licence-plate cameras learn about your drives</title>
   </head>
   <body>
     <div id="app"></div>
