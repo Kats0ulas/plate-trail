@@ -205,7 +205,12 @@ function fail(e: unknown): void {
   if (e instanceof Superseded) return;
   console.error(e);
   const s = store.get();
-  store.set({ phase: s.dataset ? 'ready' : 'landing', error: (e as Error).message ?? String(e) });
+  // fetch() rejects with a bare "Failed to fetch" when the site itself can't be reached.
+  const offline = e instanceof TypeError && /fetch|network/i.test(e.message);
+  const error = offline
+    ? 'Could not download the sample data from this site. Check your internet connection and reload the page.'
+    : ((e as Error).message ?? String(e));
+  store.set({ phase: s.dataset ? 'ready' : 'landing', error });
 }
 
 export function trackPoints(): readonly TrackPoint[] {
