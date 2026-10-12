@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <!--
+      Privacy by design: the only network requests this page can make are to itself,
+      the OpenFreeMap tile host, and the Overpass API (public OSM camera/road data).
+      Your GPS track never leaves the browser. Keep connect-src locked down.
+    -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://tiles.openfreemap.org https://overpass-api.de https://overpass.kumi.systems https://overpass.private.coffee; worker-src 'self' blob:; child-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'none'"
+    />
+    <meta name="referrer" content="no-referrer" />
+    <meta
+      name="description"
+      content="What would a license-plate camera network learn about your week, and how much does the data-retention period change that?"
+    />
+    <meta name="color-scheme" content="light" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <title>Retention Window</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

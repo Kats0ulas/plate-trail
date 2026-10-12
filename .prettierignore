@@ -1,0 +1,8 @@
+dist
+coverage
+node_modules
+public/demo
+tests/fixtures
+package-lock.json
+SPEC.md
+PROGRESS.md
