@@ -4,7 +4,7 @@
 
 ![Replay of the Atlanta sample: cameras light up as the car passes, the shaded retention window slides along the timeline, and the observer’s notebook fills in home, work and routine.](docs/replay.gif)
 
-**Live demo:** _LIVE_DEMO_URL_ · runs entirely in your browser · MIT licence
+**Live demo:** https://kats0ulas.github.io/retention-window/ · runs entirely in your browser · MIT licence
 
 Load your own GPS history (GPX/TCX/KML) or click **Try the sample week**. The app places automatic licence-plate reader (ALPR) cameras on the map — real ones mapped in OpenStreetMap, or hypothetical ones at every major junction — replays your movements the way the camera network would record them, and lets an “observer” infer your home, workplace, routine and rare one-off visits from the camera reads alone. A retention selector limits what the observer can still see, and **Reveal the truth** grades every guess against what really happened.
 
