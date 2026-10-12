@@ -11,7 +11,7 @@ import { DETECTION_DEFAULTS } from '../src/engine/params';
 import type { Camera, TrackPoint } from '../src/types';
 import { demoCameras } from '../tests/load-demo';
 import { CITIES } from './make-demo';
-import { osrmRoute, type LL } from './osrm';
+import { osrmRoute, type LL, type Route } from './osrm';
 
 const [slug, placeId, connArg, modeArg] = process.argv.slice(2);
 const city = CITIES.find((c) => c.slug === slug)!;
@@ -21,22 +21,21 @@ const cams: Camera[] = demoCameras(slug!, city.cameraMode);
 const parking = modeArg === 'park' || !!place.park; // the car stops away from the place itself
 const P = { lat: place.at[0], lon: place.at[1] };
 
-function routeTrack(coords: LL[]): TrackPoint[] {
+/** Same timing model as the demo generator: OSRM's per-segment durations, a fix every 5 s. */
+function routeTrack(route: Route): TrackPoint[] {
+  const { coords, durations } = route;
+  const cum = [0];
+  for (let i = 1; i < coords.length; i++) cum.push(cum[i - 1]! + (durations[i - 1] ?? 0));
   const pts: TrackPoint[] = [];
-  let t = 0;
-  for (let i = 0; i < coords.length; i++) {
-    if (i > 0) {
-      const a = { lat: coords[i - 1]![0], lon: coords[i - 1]![1] };
-      const b = { lat: coords[i]![0], lon: coords[i]![1] };
-      const d = haversineM(a, b);
-      const steps = Math.max(1, Math.ceil(d / 55));
-      for (let k = 1; k <= steps; k++)
-        pts.push({
-          lat: a.lat + ((b.lat - a.lat) * k) / steps,
-          lon: a.lon + ((b.lon - a.lon) * k) / steps,
-          t: (t += (d / steps / 11) * 1000),
-        });
-    } else pts.push({ lat: coords[0]![0], lon: coords[0]![1], t });
+  let seg = 1;
+  for (let s = 0; s <= cum[cum.length - 1]!; s += 5) {
+    while (seg < coords.length - 1 && cum[seg]! < s) seg++;
+    const t0 = cum[seg - 1]!;
+    const t1 = cum[seg]!;
+    const u = t1 > t0 ? Math.min(1, Math.max(0, (s - t0) / (t1 - t0))) : 1;
+    const a = coords[seg - 1]!;
+    const b = coords[seg]!;
+    pts.push({ lat: a[0] + (b[0] - a[0]) * u, lon: a[1] + (b[1] - a[1]) * u, t: s * 1000 });
   }
   return pts;
 }
@@ -70,16 +69,8 @@ for (const cand of candidates) {
   const detail: string[] = [];
   for (const q of connections) {
     const qAt = q.park ?? q.at;
-    const inbound = detect(
-      routeTrack((await osrmRoute(qAt, cand)).coords),
-      cams,
-      DETECTION_DEFAULTS,
-    );
-    const outbound = detect(
-      routeTrack((await osrmRoute(cand, qAt)).coords),
-      cams,
-      DETECTION_DEFAULTS,
-    );
+    const inbound = detect(routeTrack(await osrmRoute(qAt, cand)), cams, DETECTION_DEFAULTS);
+    const outbound = detect(routeTrack(await osrmRoute(cand, qAt)), cams, DETECTION_DEFAULTS);
     const lastIn = inbound[inbound.length - 1];
     const firstOut = outbound[0];
     if (!lastIn || !firstOut) {

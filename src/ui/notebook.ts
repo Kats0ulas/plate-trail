@@ -249,7 +249,7 @@ function truthSummary(s: AppState): HTMLElement {
   const inf = s.inference!;
   const scores = s.scores ?? [];
   const lines: Node[] = [];
-  const truthById = new Map(s.truth!.places.map((t) => [t.id, t]));
+  const whose = s.truth!.source === 'persona' ? 'the persona’s' : 'your';
   for (const label of ['home', 'work'] as const) {
     const p = inf.places.find((x) => x.label === label);
     const sc = p && scores.find((x) => x.inferredId === p.id);
@@ -259,11 +259,17 @@ function truthSummary(s: AppState): HTMLElement {
         el(
           'li',
           {},
-          `The observer located your ${word} to within ${formatDistance(sc.errorM ?? 0)}, from ${p.visits} stay${p.visits === 1 ? '' : 's'} between camera reads.`,
+          `The observer located ${whose} ${word} to within ${formatDistance(sc.errorM ?? 0)}, from ${p.visits} stay${p.visits === 1 ? '' : 's'} between camera reads.`,
         ),
       );
     else if (s.truth!.places.some((t) => t.label === label))
-      lines.push(el('li', {}, `Your ${word} was not found from these reads.`));
+      lines.push(
+        el(
+          'li',
+          {},
+          `${whose[0]!.toUpperCase()}${whose.slice(1)} ${word} was not found from these reads.`,
+        ),
+      );
   }
   const found = new Set(scores.filter((x) => x.hit && x.truthId).map((x) => x.truthId!));
   const sensitive = s.truth!.places.find((t) => t.sensitive);
@@ -302,7 +308,6 @@ function truthSummary(s: AppState): HTMLElement {
     el('ul', {}, ...lines),
   );
   if (misses.length) box.append(el('p', { class: 'hint' }, `Not found: ${misses.join(', ')}.`));
-  void truthById;
   return box;
 }
 

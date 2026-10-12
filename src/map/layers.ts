@@ -195,6 +195,9 @@ function wire(map: MapLibreMap): void {
 
   // Cameras
   let cameraIds = new Set<string>();
+  const activeState = new Map<string, number>(); // camera id → age bucket currently set
+  let lastPulseKey = '';
+
   store.on(
     ['cameras'],
     (s) => {
@@ -214,8 +217,6 @@ function wire(map: MapLibreMap): void {
   );
 
   // Reads in the retention window light their camera; a pulse marks the moment of a read.
-  const activeState = new Map<string, number>(); // camera id → age bucket currently set
-  let lastPulseKey = '';
   const updateReads = (s: AppState) => {
     const hours = presetById(s.retentionId).hours;
     const dets = s.detections;

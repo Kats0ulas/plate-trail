@@ -14,6 +14,11 @@ export const DETECTION_DEFAULTS = {
   vehicleOnly: true,
   minVehicleKmh: 15,
   maxVehicleKmh: 200,
+  /**
+   * Cars crawl in traffic; people on foot never reach car speed. A slow segment still counts as
+   * driving if the vehicle reaches minVehicleKmh within ± this window.
+   */
+  vehicleWindowMs: 45_000,
   /** Optional: only count passes roughly along the camera's facing (or its reverse). */
   directionFilter: false,
   directionToleranceDeg: 45,

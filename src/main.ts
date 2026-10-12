@@ -81,6 +81,9 @@ map.on('error', (e) => console.error('[map]', e.error?.message ?? e));
 if (map.isStyleLoaded()) installLayers(map);
 else map.once('style.load', () => installLayers(map));
 
+// Dev server only (stripped from builds): lets the README GIF recorder drive the app.
+if (import.meta.env.DEV) Object.assign(window, { __rw: { map, store } });
+
 mountLanding(landing, openFilePicker, about.open);
 mountControls(controls, openFilePicker);
 mountNotebook(notebook, (p) => {
