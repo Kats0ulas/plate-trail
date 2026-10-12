@@ -96,6 +96,18 @@ describe('ground-truth stay points', () => {
     expect(stays[0]!.lon).toBeCloseTo(23 + mLon(3000, lat), 3);
   });
 
+  it('merges a visit split in two by walking in from a car parked 120 m away', () => {
+    const pts: TrackPoint[] = [];
+    let t = T0;
+    for (let x = 0; x < 2000; x += 70) pts.push(at(x, (t += 5000))); // drive
+    for (let x = 2000; x <= 2120; x += 13) pts.push(at(x, (t += 10_000))); // walk 120 m
+    for (let k = 0; k < 24; k++) pts.push(at(2120 + (k % 3) * 8, (t += 5 * MIN))); // 2 hours
+    for (let x = 2120; x < 5000; x += 70) pts.push(at(x, (t += 5000)));
+    const stays = detectStayPoints(pts, GROUND_TRUTH_DEFAULTS);
+    expect(stays).toHaveLength(1);
+    expect(stays[0]!.depart - stays[0]!.arrive).toBeGreaterThan(110 * MIN);
+  });
+
   it('ignores a short stop (traffic light, 2 minutes)', () => {
     const pts: TrackPoint[] = [];
     let t = T0;

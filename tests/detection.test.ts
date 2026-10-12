@@ -38,6 +38,33 @@ describe('detection', () => {
     expect(detect(walk, [cam], { ...P, vehicleOnly: false })).toHaveLength(1);
   });
 
+  it('a car crawling past a camera in traffic is read; a runner at 12 km/h is not', () => {
+    // 50 km/h for 30 s, crawl at 10 km/h for 30 s (past the camera), 50 km/h again.
+    const fast1 = straightDrive({ lat: LAT, lon0: LON0, kmh: 50, durationS: 30 });
+    const end1 = fast1[fast1.length - 1]!;
+    const crawl = straightDrive({
+      lat: LAT,
+      lon0: end1.lon,
+      kmh: 10,
+      durationS: 30,
+      start: end1.t,
+    }).slice(1);
+    const end2 = crawl[crawl.length - 1]!;
+    const fast2 = straightDrive({
+      lat: LAT,
+      lon0: end2.lon,
+      kmh: 50,
+      durationS: 30,
+      start: end2.t,
+    }).slice(1);
+    const crawlMidLon = crawl[3]!.lon;
+    const cam = camera('a', LAT + mLat(5), crawlMidLon);
+    expect(detect([...fast1, ...crawl, ...fast2], [cam], P)).toHaveLength(1);
+    const run = straightDrive({ lat: LAT, lon0: LON0, kmh: 12, durationS: 300 });
+    const cam2 = camera('b', LAT + mLat(5), run[30]!.lon);
+    expect(detect(run, [cam2], P)).toHaveLength(0);
+  });
+
   it('repeated passes within 2 minutes count once; later passes count again', () => {
     const cam = camera('a', LAT + mLat(10), LON0 + mLon(100, LAT));
     const there = straightDrive({ lat: LAT, lon0: LON0, kmh: 36, durationS: 20, stepS: 2 }); // 200 m east

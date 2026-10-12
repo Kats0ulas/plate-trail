@@ -95,6 +95,12 @@ export function roadsQuery(cells: readonly string[], cellDeg = OVERPASS_DEFAULTS
 
 // ---------------------------------------------------------------- fetching
 
+/** Wait a little longer than the query's own server-side [timeout:N], then give up on that server. */
+export function clientTimeoutMs(query: string): number {
+  const n = Number(/[timeout:(d+)]/.exec(query)?.[1] ?? 60);
+  return (n + 20) * 1000;
+}
+
 export type FetchLike = (url: string, init: RequestInit) => Promise<Response>;
 
 export type OverpassOptions = {
@@ -141,7 +147,7 @@ export async function overpassFetch(
       if (opts.signal?.aborted) throw new OverpassError('Cancelled', 'aborted');
       let res: Response;
       const timeout = new AbortController();
-      const timer = setTimeout(() => timeout.abort(), opts.timeoutMs ?? 90_000);
+      const timer = setTimeout(() => timeout.abort(), opts.timeoutMs ?? clientTimeoutMs(query));
       const onAbort = () => timeout.abort();
       opts.signal?.addEventListener('abort', onAbort);
       try {

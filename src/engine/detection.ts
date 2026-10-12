@@ -27,6 +27,40 @@ function facesHeading(cam: Camera, headingDeg: number, toleranceDeg: number): bo
   );
 }
 
+/**
+ * Vehicle-only filter. A segment counts as driving when it is not faster than a car can go and
+ * the vehicle reaches car speed somewhere within ± vehicleWindowMs — so a car crawling past a
+ * camera in traffic is still read, while walking and running (which never reach car speed) are not.
+ */
+function drivingSegments(
+  track: readonly TrackPoint[],
+  speed: Float64Array,
+  p: DetectionParams,
+): Uint8Array {
+  const n = track.length;
+  const out = new Uint8Array(n);
+  const mid = (i: number) => (track[i - 1]!.t + track[i]!.t) / 2;
+  // Sliding-window maximum of speed over segments whose midpoints lie within ± the window.
+  const deque: number[] = [];
+  let head = 0;
+  let hi = 1;
+  for (let i = 1; i < n; i++) {
+    if (Number.isNaN(speed[i]!) || speed[i]! > p.maxVehicleKmh) continue;
+    const t = mid(i);
+    while (hi < n && mid(hi) <= t + p.vehicleWindowMs) {
+      const v = speed[hi]!;
+      if (!Number.isNaN(v) && v <= p.maxVehicleKmh) {
+        while (deque.length > head && speed[deque[deque.length - 1]!]! <= v) deque.pop();
+        deque.push(hi);
+      }
+      hi++;
+    }
+    while (head < deque.length && mid(deque[head]!) < t - p.vehicleWindowMs) head++;
+    if (head < deque.length && speed[deque[head]!]! >= p.minVehicleKmh) out[i] = 1;
+  }
+  return out;
+}
+
 export function detect(
   track: readonly TrackPoint[],
   camerasOrIndex: readonly Camera[] | CameraIndex,
@@ -40,16 +74,27 @@ export function detect(
   const R = params.radiusM;
   const raw: (Detection & { distanceM: number })[] = [];
   let lastHeading = 0;
+  const n = track.length;
 
-  for (let i = 1; i < track.length; i++) {
+  // Segment speeds (NaN = not a usable segment: no time step, or a recording gap).
+  const speed = new Float64Array(n).fill(NaN);
+  const dist = new Float64Array(n);
+  for (let i = 1; i < n; i++) {
+    const dt = track[i]!.t - track[i - 1]!.t;
+    if (dt <= 0 || dt > params.maxSegmentGapMs) continue;
+    dist[i] = haversineM(track[i - 1]!, track[i]!);
+    speed[i] = (dist[i]! / (dt / 1000)) * 3.6;
+  }
+  const driving = params.vehicleOnly ? drivingSegments(track, speed, params) : null;
+
+  for (let i = 1; i < n; i++) {
     const a = track[i - 1]!;
     const b = track[i]!;
     const dt = b.t - a.t;
-    if (dt <= 0 || dt > params.maxSegmentGapMs) continue;
-    const distM = haversineM(a, b);
-    const speedKmh = (distM / (dt / 1000)) * 3.6;
-    if (params.vehicleOnly && (speedKmh < params.minVehicleKmh || speedKmh > params.maxVehicleKmh))
-      continue;
+    const speedKmh = speed[i]!;
+    if (Number.isNaN(speedKmh)) continue;
+    if (driving && !driving[i]) continue;
+    const distM = dist[i]!;
 
     const { dLat, dLon } = radiusToDegrees(Math.max(Math.abs(a.lat), Math.abs(b.lat)), R);
     const hits = index.search(

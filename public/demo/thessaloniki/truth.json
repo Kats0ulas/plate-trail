@@ -1,0 +1,601 @@
+{
+ "city": "Thessaloniki, Greece",
+ "timeZone": "Europe/Athens",
+ "start": 1788123600000,
+ "end": 1791145800000,
+ "persona": "Eleni, an office worker living in Kalamaria, Thessaloniki",
+ "places": [
+  {
+   "id": "home",
+   "label": "home",
+   "lat": 40.58555,
+   "lon": 22.95205,
+   "name": "Home (Kalamaria)",
+   "visits": [
+    {
+     "arrive": 1788123600000,
+     "depart": 1788154050000
+    },
+    {
+     "arrive": 1788186586218.4114,
+     "depart": 1788240159000
+    },
+    {
+     "arrive": 1788278026252.1702,
+     "depart": 1788326598000
+    },
+    {
+     "arrive": 1788358861773.157,
+     "depart": 1788412362000
+    },
+    {
+     "arrive": 1788449739844.4402,
+     "depart": 1788499534000
+    },
+    {
+     "arrive": 1788532086417.9556,
+     "depart": 1788591028000
+    },
+    {
+     "arrive": 1788707654642.5195,
+     "depart": 1788758032000
+    },
+    {
+     "arrive": 1788795347299.0222,
+     "depart": 1788844589000
+    },
+    {
+     "arrive": 1788882014988.917,
+     "depart": 1788931690000
+    },
+    {
+     "arrive": 1788962977603.7048,
+     "depart": 1789017960000
+    },
+    {
+     "arrive": 1789055722080.4585,
+     "depart": 1789103959000
+    },
+    {
+     "arrive": 1789136758078.216,
+     "depart": 1789199812000
+    },
+    {
+     "arrive": 1789203355494.6357,
+     "depart": 1789233607000
+    },
+    {
+     "arrive": 1789242740851.7852,
+     "depart": 1789311738000
+    },
+    {
+     "arrive": 1789319561919.7874,
+     "depart": 1789363976000
+    },
+    {
+     "arrive": 1789395825766.7578,
+     "depart": 1789448787000
+    },
+    {
+     "arrive": 1789488358460.4495,
+     "depart": 1789535250000
+    },
+    {
+     "arrive": 1789582233762.4248,
+     "depart": 1789622249000
+    },
+    {
+     "arrive": 1789660439029.1216,
+     "depart": 1789707942000
+    },
+    {
+     "arrive": 1789740847759.3782,
+     "depart": 1789803884000
+    },
+    {
+     "arrive": 1789806873671.8284,
+     "depart": 1789840463000
+    },
+    {
+     "arrive": 1789849160967.208,
+     "depart": 1789893313000
+    },
+    {
+     "arrive": 1789909089882.0776,
+     "depart": 1789968223000
+    },
+    {
+     "arrive": 1790005390696.2642,
+     "depart": 1790053800000
+    },
+    {
+     "arrive": 1790091366239.481,
+     "depart": 1790141350000
+    },
+    {
+     "arrive": 1790173497198.4158,
+     "depart": 1790226479000
+    },
+    {
+     "arrive": 1790264729628.806,
+     "depart": 1790314398000
+    },
+    {
+     "arrive": 1790346281254.792,
+     "depart": 1790408958000
+    },
+    {
+     "arrive": 1790412260482.4988,
+     "depart": 1790443503000
+    },
+    {
+     "arrive": 1790452725919.5637,
+     "depart": 1790521408000
+    },
+    {
+     "arrive": 1790529170202.7537,
+     "depart": 1790572887000
+    },
+    {
+     "arrive": 1790604744118.4126,
+     "depart": 1790658452000
+    },
+    {
+     "arrive": 1790696062501.7466,
+     "depart": 1790746387000
+    },
+    {
+     "arrive": 1790778236646.5808,
+     "depart": 1790832198000
+    },
+    {
+     "arrive": 1790868853629.6206,
+     "depart": 1790918645000
+    },
+    {
+     "arrive": 1790950306974.9912,
+     "depart": 1791014272000
+    },
+    {
+     "arrive": 1791017956314.9065,
+     "depart": 1791105902000
+    },
+    {
+     "arrive": 1791116156365.7688,
+     "depart": 1791145800000
+    }
+   ]
+  },
+  {
+   "id": "work",
+   "label": "work",
+   "lat": 40.64205,
+   "lon": 22.93105,
+   "name": "Office (near the railway station)",
+   "visits": [
+    {
+     "arrive": 1788155077089.94,
+     "depart": 1788185594000
+    },
+    {
+     "arrive": 1788241177221.5903,
+     "depart": 1788271488000
+    },
+    {
+     "arrive": 1788327643159.4834,
+     "depart": 1788357930000
+    },
+    {
+     "arrive": 1788413356343.17,
+     "depart": 1788443834000
+    },
+    {
+     "arrive": 1788500656304.2183,
+     "depart": 1788531153000
+    },
+    {
+     "arrive": 1788758925658.3374,
+     "depart": 1788788965000
+    },
+    {
+     "arrive": 1788845699363.2156,
+     "depart": 1788876571000
+    },
+    {
+     "arrive": 1788932677980.7488,
+     "depart": 1788961968000
+    },
+    {
+     "arrive": 1789018954683.7922,
+     "depart": 1789049430000
+    },
+    {
+     "arrive": 1789104957236.9487,
+     "depart": 1789135784000
+    },
+    {
+     "arrive": 1789364981081.6309,
+     "depart": 1789394911000
+    },
+    {
+     "arrive": 1789449737136.7002,
+     "depart": 1789481663000
+    },
+    {
+     "arrive": 1789536272220.4172,
+     "depart": 1789573247000
+    },
+    {
+     "arrive": 1789623163616.7861,
+     "depart": 1789654538000
+    },
+    {
+     "arrive": 1789709033762.0728,
+     "depart": 1789739977000
+    },
+    {
+     "arrive": 1789969252006.25,
+     "depart": 1789999705000
+    },
+    {
+     "arrive": 1790054677953.6997,
+     "depart": 1790085033000
+    },
+    {
+     "arrive": 1790142331391.0442,
+     "depart": 1790172596000
+    },
+    {
+     "arrive": 1790227498853.3867,
+     "depart": 1790258049000
+    },
+    {
+     "arrive": 1790315515190.2588,
+     "depart": 1790345315000
+    },
+    {
+     "arrive": 1790573806778.0461,
+     "depart": 1790603805000
+    },
+    {
+     "arrive": 1790659425806.6965,
+     "depart": 1790689775000
+    },
+    {
+     "arrive": 1790747419076.117,
+     "depart": 1790777253000
+    },
+    {
+     "arrive": 1790833107444.538,
+     "depart": 1790862384000
+    },
+    {
+     "arrive": 1790919667718.5889,
+     "depart": 1790949382000
+    }
+   ]
+  },
+  {
+   "id": "gym",
+   "label": "recurring",
+   "lat": 40.60805,
+   "lon": 22.96905,
+   "name": "Gym (Toumba)",
+   "visits": [
+    {
+     "arrive": 1788272112434.0134,
+     "depart": 1788277697000
+    },
+    {
+     "arrive": 1788444528063.6287,
+     "depart": 1788449254000
+    },
+    {
+     "arrive": 1788789651657.486,
+     "depart": 1788794899000
+    },
+    {
+     "arrive": 1788877117205.3882,
+     "depart": 1788881690000
+    },
+    {
+     "arrive": 1789050071724.8403,
+     "depart": 1789055389000
+    },
+    {
+     "arrive": 1789482366819.2605,
+     "depart": 1789487875000
+    },
+    {
+     "arrive": 1789655250621.6006,
+     "depart": 1789660097000
+    },
+    {
+     "arrive": 1790000275288.336,
+     "depart": 1790005016000
+    },
+    {
+     "arrive": 1790085800772.3574,
+     "depart": 1790090939000
+    },
+    {
+     "arrive": 1790258713651.3127,
+     "depart": 1790264335000
+    },
+    {
+     "arrive": 1790690410322.8198,
+     "depart": 1790695558000
+    },
+    {
+     "arrive": 1790863114209.8496,
+     "depart": 1790868394000
+    }
+   ]
+  },
+  {
+   "id": "grocery",
+   "label": "recurring",
+   "lat": 40.58005,
+   "lon": 22.96005,
+   "name": "Supermarket (Kalamaria)",
+   "visits": [
+    {
+     "arrive": 1789200007846.7363,
+     "depart": 1789203157000
+    },
+    {
+     "arrive": 1789804125072.2156,
+     "depart": 1789806627000
+    },
+    {
+     "arrive": 1790409204149.8857,
+     "depart": 1790412041000
+    },
+    {
+     "arrive": 1791014421533.1812,
+     "depart": 1791017805000
+    }
+   ]
+  },
+  {
+   "id": "friend",
+   "label": "recurring",
+   "lat": 40.59905,
+   "lon": 22.98705,
+   "name": "Friend's place (Pylaia)",
+   "visits": [
+    {
+     "arrive": 1789234037233.9248,
+     "depart": 1789242342000
+    },
+    {
+     "arrive": 1790443888809.0737,
+     "depart": 1790452233000
+    }
+   ]
+  },
+  {
+   "id": "park",
+   "label": "recurring",
+   "lat": 40.62145,
+   "lon": 22.95185,
+   "name": "Nea Paralia (waterfront)",
+   "visits": [
+    {
+     "arrive": 1789312323934.5254,
+     "depart": 1789318959000
+    },
+    {
+     "arrive": 1790522008119.9421,
+     "depart": 1790528601000
+    }
+   ]
+  },
+  {
+   "id": "rally",
+   "label": "rare",
+   "lat": 40.63245,
+   "lon": 22.94065,
+   "name": "Rally at Aristotelous Square",
+   "sensitive": true,
+   "visits": [
+    {
+     "arrive": 1789573614480.2312,
+     "depart": 1789581337000
+    }
+   ]
+  },
+  {
+   "id": "restaurant",
+   "label": "rare",
+   "lat": 40.64305,
+   "lon": 22.95905,
+   "name": "Taverna (Ano Poli)",
+   "visits": [
+    {
+     "arrive": 1789841308204.5193,
+     "depart": 1789848266000
+    }
+   ]
+  },
+  {
+   "id": "beach",
+   "label": "rare",
+   "lat": 40.49905,
+   "lon": 22.92505,
+   "name": "Beach (Perea)",
+   "visits": [
+    {
+     "arrive": 1789894745424.9946,
+     "depart": 1789907731000
+    }
+   ]
+  },
+  {
+   "id": "mall",
+   "label": "rare",
+   "lat": 40.51305,
+   "lon": 22.97205,
+   "name": "Shopping centre (Mediterranean Cosmos)",
+   "visits": [
+    {
+     "arrive": 1791106836659.612,
+     "depart": 1791114947000
+    }
+   ]
+  },
+  {
+   "id": "halkidiki",
+   "label": "rare",
+   "lat": 40.07805,
+   "lon": 23.44705,
+   "name": "Weekend away (Kallithea, Halkidiki)",
+   "visits": [
+    {
+     "arrive": 1788595282829.5977,
+     "depart": 1788703294000
+    }
+   ]
+  }
+ ],
+ "schedule": [
+  {
+   "weekday": 0,
+   "days": 5,
+   "leaveHome": {
+    "meanMin": 503.9,
+    "stdMin": 6.3,
+    "n": 5
+   },
+   "arriveWork": {
+    "meanMin": 520.1,
+    "stdMin": 7.1,
+    "n": 5
+   },
+   "leaveWork": {
+    "meanMin": 1023.3,
+    "stdMin": 8.8,
+    "n": 5
+   },
+   "returnHome": {
+    "meanMin": 1073,
+    "stdMin": 38.4,
+    "n": 5
+   }
+  },
+  {
+   "weekday": 1,
+   "days": 5,
+   "leaveHome": {
+    "meanMin": 492.6,
+    "stdMin": 6.1,
+    "n": 5
+   },
+   "arriveWork": {
+    "meanMin": 509.1,
+    "stdMin": 6.9,
+    "n": 5
+   },
+   "leaveWork": {
+    "meanMin": 1021.8,
+    "stdMin": 10,
+    "n": 5
+   },
+   "returnHome": {
+    "meanMin": 1126.1,
+    "stdMin": 12,
+    "n": 5
+   }
+  },
+  {
+   "weekday": 2,
+   "days": 5,
+   "leaveHome": {
+    "meanMin": 504.3,
+    "stdMin": 8.9,
+    "n": 5
+   },
+   "arriveWork": {
+    "meanMin": 521.1,
+    "stdMin": 8.8,
+    "n": 5
+   },
+   "leaveWork": {
+    "meanMin": 1043.3,
+    "stdMin": 39.2,
+    "n": 5
+   },
+   "returnHome": {
+    "meanMin": 1086,
+    "stdMin": 92.4,
+    "n": 5
+   }
+  },
+  {
+   "weekday": 3,
+   "days": 5,
+   "leaveHome": {
+    "meanMin": 497.5,
+    "stdMin": 6.6,
+    "n": 5
+   },
+   "arriveWork": {
+    "meanMin": 513.6,
+    "stdMin": 6.3,
+    "n": 5
+   },
+   "leaveWork": {
+    "meanMin": 1020.8,
+    "stdMin": 10.8,
+    "n": 5
+   },
+   "returnHome": {
+    "meanMin": 1124.9,
+    "stdMin": 8.9,
+    "n": 5
+   }
+  },
+  {
+   "weekday": 4,
+   "days": 5,
+   "leaveHome": {
+    "meanMin": 501.6,
+    "stdMin": 9.1,
+    "n": 5
+   },
+   "arriveWork": {
+    "meanMin": 519.4,
+    "stdMin": 9.3,
+    "n": 5
+   },
+   "leaveWork": {
+    "meanMin": 1025.4,
+    "stdMin": 6.2,
+    "n": 5
+   },
+   "returnHome": {
+    "meanMin": 1040.9,
+    "stdMin": 6.6,
+    "n": 5
+   }
+  },
+  {
+   "weekday": 5,
+   "days": 5,
+   "leaveHome": {
+    "meanMin": 639.8,
+    "stdMin": 25.2,
+    "n": 5
+   }
+  },
+  {
+   "weekday": 6,
+   "days": 5,
+   "leaveHome": {
+    "meanMin": 720.1,
+    "stdMin": 24.9,
+    "n": 2
+   }
+  }
+ ]
+}

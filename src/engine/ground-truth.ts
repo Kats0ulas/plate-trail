@@ -24,7 +24,23 @@ export function detectStayPoints(track: readonly TrackPoint[], params: GroundTru
     const last = track[j - 1]!;
     if (j - 1 > i && last.t - pi.t >= params.stayMinMs) {
       const c = weightedCentroid(track.slice(i, j));
-      stays.push({ lat: c.lat, lon: c.lon, radiusM: 0, arrive: pi.t, depart: last.t });
+      const prev = stays[stays.length - 1];
+      // Walking in from the car can anchor a stay off-centre and split one visit in two:
+      // merge back-to-back stays at the same spot.
+      if (
+        prev &&
+        pi.t - prev.depart <= params.stayMinMs &&
+        haversineM(prev, c) <= params.stayRadiusM
+      ) {
+        const w1 = prev.depart - prev.arrive;
+        const w2 = last.t - pi.t;
+        const m = weightedCentroid([prev, c], [w1, w2]);
+        prev.lat = m.lat;
+        prev.lon = m.lon;
+        prev.depart = last.t;
+      } else {
+        stays.push({ lat: c.lat, lon: c.lon, radiusM: 0, arrive: pi.t, depart: last.t });
+      }
       i = j;
     } else {
       i++;
