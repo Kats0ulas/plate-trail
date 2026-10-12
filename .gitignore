@@ -1,0 +1,36 @@
+# dependencies / build output
+node_modules/
+dist/
+coverage/
+*.log
+.vite/
+
+# editor / OS
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+.idea/
+
+# local working notes
+PROGRESS.md
+SPEC.md
+
+# demo-generator caches (routing responses, raw Overpass dumps)
+scripts/.cache/
+
+# Never commit real location history. GPS exports are ignored everywhere...
+*.gpx
+*.fit
+*.tcx
+*.kml
+*.json
+# ...except the synthetic demo data and the project's own config files.
+!public/demo/**/*.gpx
+!public/demo/**/*.json
+!tests/fixtures/*.json
+!package.json
+!package-lock.json
+!tsconfig.json
+!tsconfig.node.json
+!.prettierrc.json
