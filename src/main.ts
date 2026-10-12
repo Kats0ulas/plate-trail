@@ -75,7 +75,11 @@ const toast = el('div', { class: 'toast', role: 'alert', hidden: true });
 app.append(mapEl, topbar, controls, notebook, timeline, tabs, landing, dropzone, toast, fileInput);
 
 const map = createMap(mapEl);
-map.on('load', () => installLayers(map));
+map.on('error', (e) => console.error('[map]', e.error?.message ?? e));
+// Data layers go in as soon as the style is ready (no need to wait for every tile); they
+// pick up whatever is already loaded, so clicking the demo early is fine.
+if (map.isStyleLoaded()) installLayers(map);
+else map.once('style.load', () => installLayers(map));
 
 mountLanding(landing, openFilePicker, about.open);
 mountControls(controls, openFilePicker);

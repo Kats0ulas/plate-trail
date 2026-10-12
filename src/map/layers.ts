@@ -161,20 +161,28 @@ function wire(map: MapLibreMap): void {
   zoomClass();
 
   // Real path
-  store.on(['dataset'], () => {
-    const data: Feature<LineString> = {
-      type: 'Feature',
-      properties: {},
-      geometry: { type: 'LineString', coordinates: track.map((p) => [p.lon, p.lat]) },
-    };
-    src(map, 'track').setData(track.length > 1 ? data : EMPTY);
-    if (track.length > 1) {
-      const b = new LngLatBounds();
-      for (let i = 0; i < track.length; i += Math.max(1, Math.floor(track.length / 2000)))
-        b.extend([track[i]!.lon, track[i]!.lat]);
-      map.fitBounds(b, { padding: fitPadding(), duration: reducedMotion() ? 0 : 900, maxZoom: 13 });
-    }
-  });
+  store.on(
+    ['dataset'],
+    () => {
+      const data: Feature<LineString> = {
+        type: 'Feature',
+        properties: {},
+        geometry: { type: 'LineString', coordinates: track.map((p) => [p.lon, p.lat]) },
+      };
+      src(map, 'track').setData(track.length > 1 ? data : EMPTY);
+      if (track.length > 1) {
+        const b = new LngLatBounds();
+        for (let i = 0; i < track.length; i += Math.max(1, Math.floor(track.length / 2000)))
+          b.extend([track[i]!.lon, track[i]!.lat]);
+        map.fitBounds(b, {
+          padding: fitPadding(),
+          duration: reducedMotion() ? 0 : 900,
+          maxZoom: 13,
+        });
+      }
+    },
+    true,
+  );
   store.on(
     ['showTrack'],
     (s) => {
@@ -187,19 +195,23 @@ function wire(map: MapLibreMap): void {
 
   // Cameras
   let cameraIds = new Set<string>();
-  store.on(['cameras'], (s) => {
-    const fc: FeatureCollection<Point> = {
-      type: 'FeatureCollection',
-      features: s.cameras.map((c) => ({
-        type: 'Feature',
-        properties: { id: c.id, label: c.label, simulated: c.simulated },
-        geometry: { type: 'Point', coordinates: [c.lon, c.lat] },
-      })),
-    };
-    src(map, 'cameras').setData(fc);
-    cameraIds = new Set(s.cameras.map((c) => c.id));
-    activeState.clear();
-  });
+  store.on(
+    ['cameras'],
+    (s) => {
+      const fc: FeatureCollection<Point> = {
+        type: 'FeatureCollection',
+        features: s.cameras.map((c) => ({
+          type: 'Feature',
+          properties: { id: c.id, label: c.label, simulated: c.simulated },
+          geometry: { type: 'Point', coordinates: [c.lon, c.lat] },
+        })),
+      };
+      src(map, 'cameras').setData(fc);
+      cameraIds = new Set(s.cameras.map((c) => c.id));
+      activeState.clear();
+    },
+    true,
+  );
 
   // Reads in the retention window light their camera; a pulse marks the moment of a read.
   const activeState = new Map<string, number>(); // camera id → age bucket currently set
@@ -255,7 +267,11 @@ function wire(map: MapLibreMap): void {
       });
     }
   };
-  store.on(['T', 'detections', 'retentionId', 'cameras', 'showTrack', 'playing'], updateReads);
+  store.on(
+    ['T', 'detections', 'retentionId', 'cameras', 'showTrack', 'playing'],
+    updateReads,
+    true,
+  );
 
   // Inferred places + truth overlay
   let markers: Marker[] = [];
@@ -311,7 +327,7 @@ function wire(map: MapLibreMap): void {
     }
     src(map, 'truth-links').setData({ type: 'FeatureCollection', features: links });
   };
-  store.on(['inference', 'revealTruth', 'truth', 'scores'], renderPlaces);
+  store.on(['inference', 'revealTruth', 'truth', 'scores'], renderPlaces, true);
 }
 
 function placeMarker(map: MapLibreMap, p: Place, kind: 'inferred'): Marker {
