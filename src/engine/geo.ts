@@ -15,7 +15,7 @@ export function haversineM(a: LatLon, b: LatLon): number {
   return 2 * EARTH_RADIUS_M * Math.asin(Math.min(1, Math.sqrt(s)));
 }
 
-/** Initial bearing from a to b, degrees clockwise from north, 0–360. */
+/** Initial bearing from a to b, degrees clockwise from north, 0 to 360. */
 export function bearingDeg(a: LatLon, b: LatLon): number {
   const φ1 = a.lat * RAD;
   const φ2 = b.lat * RAD;
@@ -25,7 +25,7 @@ export function bearingDeg(a: LatLon, b: LatLon): number {
   return (Math.atan2(y, x) / RAD + 360) % 360;
 }
 
-/** Smallest absolute difference between two angles, 0–180. */
+/** Smallest absolute difference between two angles, 0 to 180. */
 export function angleDiffDeg(a: number, b: number): number {
   const d = Math.abs((((a - b) % 360) + 360) % 360);
   return d > 180 ? 360 - d : d;

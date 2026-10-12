@@ -59,7 +59,7 @@ describe('observer isolation', () => {
     );
     expect(result.places).toEqual([]);
     expect(result.stats.reads).toBe(0);
-    // Signature: (detections, cameras, params, timeZone) — no track argument exists.
+    // Signature: (detections, cameras, params, timeZone). No track argument exists.
     expect(inferFromDetections.length).toBe(4);
   });
 });

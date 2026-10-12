@@ -24,7 +24,7 @@ function devCspRelax(): Plugin {
 }
 
 export default defineConfig({
-  // Relative base so the same build works on GitHub Pages (/retention-window/) and anywhere else.
+  // Relative base so the same build works on GitHub Pages (/plate-trail/) and anywhere else.
   base: './',
   plugins: [devCspRelax()],
   worker: { format: 'es' },

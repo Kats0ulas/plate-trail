@@ -44,7 +44,7 @@ export function engineParams(s: AppState = store.get()): EngineParams {
   return p;
 }
 
-// ------------------------------------------------------------------ loading data
+// Loading data
 
 export async function fetchManifest(): Promise<DemoEntry[]> {
   const res = await fetch(`${base}demo/index.json`);
@@ -71,7 +71,7 @@ export async function loadDemo(slug: string): Promise<void> {
       points,
       {
         kind: 'demo',
-        name: `${entry.city} — synthetic persona`,
+        name: `${entry.city} (synthetic persona)`,
         slug,
         persona: entry.persona,
         start: points[0]!.t,
@@ -217,7 +217,7 @@ export function trackPoints(): readonly TrackPoint[] {
   return track;
 }
 
-// ------------------------------------------------------------------ cameras
+// Cameras
 
 async function snapshot<T>(file: string): Promise<{ fetchedAt: string; data: T } | null> {
   const slug = store.get().dataset?.slug;
@@ -343,7 +343,7 @@ export function applyCameras(source?: 'live' | 'snapshot', fetchedAt?: string): 
   });
 }
 
-// ------------------------------------------------------------------ engine pipeline
+// Engine pipeline
 
 let detectSeq = 0;
 async function runDetection(): Promise<void> {

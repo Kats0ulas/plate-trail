@@ -46,7 +46,7 @@ export type AppState = {
   /** Explicit choice in settings; null = use the dataset's or the browser's zone. */
   tzOverride: string | null;
   cameraMode: CameraMode;
-  simCoverage: number; // 0–100
+  simCoverage: number; // 0 to 100
   simMinSpacingM: number;
   simRoadClasses: RoadClass[];
   radiusM: number;

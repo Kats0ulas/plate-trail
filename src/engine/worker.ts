@@ -56,7 +56,7 @@ function handle(req: WorkerRequest): unknown {
       detections = detect(track, index, req.params);
       return detections;
     case 'infer': {
-      // The observer gets camera reads and camera positions — never the track.
+      // The observer gets camera reads and camera positions, never the track.
       const visible = visibleDetections(detections, req.T, req.retentionHours);
       return inferFromDetections(visible, cameras, req.params, req.timeZone);
     }

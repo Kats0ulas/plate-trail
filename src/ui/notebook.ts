@@ -149,7 +149,7 @@ function content(
       'recurring',
       'Recurring places',
       byLabel('recurring').map(card),
-      'None yet: needs 30–150 min stays at similar times on 2+ days.',
+      'None yet: needs stays of 30 to 150 min at similar times on 2 or more days.',
     ),
   );
   out.push(
@@ -280,7 +280,7 @@ function truthSummary(s: AppState): HTMLElement {
         { class: found.has(sensitive.id) ? 'warn' : '' },
         found.has(sensitive.id)
           ? `It found the one-off visit: ${sensitive.name}.`
-          : `It did not find the one-off visit (${sensitive.name}) — the reads from that evening are ${
+          : `It did not find the one-off visit (${sensitive.name}). The reads from that evening are ${
               presetById(s.retentionId).hours === null
                 ? 'not enough'
                 : 'outside this retention window or too sparse'
@@ -312,7 +312,7 @@ function truthSummary(s: AppState): HTMLElement {
 }
 
 function fmtStat(s: TimeStat | undefined): string {
-  if (!s) return '—';
+  if (!s) return 'n/a';
   return s.n > 1 ? `${formatClock(s.meanMin)} ±${Math.round(s.stdMin)}` : formatClock(s.meanMin);
 }
 
@@ -470,7 +470,7 @@ function cmpRow(r: ComparisonRow, s: AppState, maxFound: number): HTMLElement {
         ? el('span', { class: 'flag', title: `Includes ${sensitive.name}` }, ' ⚑')
         : '',
     ),
-    el('td', {}, r.homeErrorM === null ? '—' : formatDistance(r.homeErrorM)),
-    el('td', {}, r.scheduleConfidence ?? '—'),
+    el('td', {}, r.homeErrorM === null ? 'not found' : formatDistance(r.homeErrorM)),
+    el('td', {}, r.scheduleConfidence ?? 'none'),
   );
 }

@@ -2,7 +2,7 @@
  * The observer: everything an analyst with access to the camera network could infer.
  *
  * It only ever sees Detection[] (plate reads) and Camera[] (public camera positions).
- * It never receives, imports or reaches the raw GPS track — see the eslint rule for this
+ * It never receives, imports or reaches the raw GPS track. See the eslint rule for this
  * file and tests/observer-isolation.test.ts.
  */
 import type { Camera, Detection, InferenceResult } from '../types';

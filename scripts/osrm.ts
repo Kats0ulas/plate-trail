@@ -7,7 +7,7 @@ export type LL = [lat: number, lon: number];
 export type Route = { coords: LL[]; durations: number[] };
 
 const CACHE = join(dirname(fileURLToPath(import.meta.url)), '.cache');
-const USER_AGENT = 'retention-window demo generator (one-off, cached)';
+const USER_AGENT = 'plate-trail demo generator (one-off, cached)';
 
 export async function osrmRoute(from: LL, to: LL): Promise<Route> {
   mkdirSync(join(CACHE, 'osrm'), { recursive: true });

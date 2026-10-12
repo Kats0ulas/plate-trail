@@ -48,7 +48,7 @@ export type Labelled = { places: Place[]; clusterLabels: Map<string, PlaceLabel>
 
 const dwell = (v: Visit) => Math.max(0, v.depart - v.arrive);
 
-// ---------------------------------------------------------------- clustering
+// Clustering
 
 /**
  * DBSCAN (@turf/clusters-dbscan) over stay locations. Stays that belong to no cluster
@@ -105,7 +105,7 @@ export function clusterVisits(
   return out;
 }
 
-// ---------------------------------------------------------------- time windows
+// Time windows
 
 type DayOverlap = { ms: number; days: Map<string, number> };
 
@@ -182,7 +182,7 @@ const circDiff = (a: number, b: number) => {
   return d > 720 ? 1440 - d : d;
 };
 
-// ---------------------------------------------------------------- labelling
+// Labelling
 
 export function labelPlaces(clusters: readonly VisitCluster[], ctx: LabelContext): Labelled {
   const { timeZone: tz, kind, params: p } = ctx;
@@ -309,7 +309,7 @@ export function labelPlaces(clusters: readonly VisitCluster[], ctx: LabelContext
       .map((w) => WEEKDAY_SHORT[w]);
     const durs = best.map(dwell);
     const evidence = [
-      `${best.length} stay${best.length === 1 ? '' : 's'} of ${formatDuration(Math.min(...durs))}–${formatDuration(Math.max(...durs))} on ${nd} different days.`,
+      `${best.length} stay${best.length === 1 ? '' : 's'} of ${formatDuration(Math.min(...durs))} to ${formatDuration(Math.max(...durs))} on ${nd} different days.`,
       `${obs ? 'Reads suggest arrival' : 'Arrival'} around ${formatClock(mean)} (± ${Math.round(sd)} min), on ${weekdays.join(', ')}${obs ? camerasPhrase(best.map((v) => v.cameraLabels?.[0] ?? '').filter(Boolean)) : ''}.`,
     ];
     const place = base(c, 'recurring', nd, evidence);

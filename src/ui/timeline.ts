@@ -42,7 +42,7 @@ export function mountTimeline(root: HTMLElement): void {
   play.addEventListener('click', () => togglePlay());
   speed.addEventListener('change', () => store.set({ speed: Number(speed.value) }));
 
-  // --- playback loop
+  // Playback loop
   let raf = 0;
   let last = 0;
   const loop = (now: number) => {
@@ -79,7 +79,7 @@ export function mountTimeline(root: HTMLElement): void {
     store.set({ playing: !store.get().playing });
   }
 
-  // --- scrubbing
+  // Scrubbing
   const timeAt = (clientX: number) => {
     const s = store.get();
     if (!s.dataset) return 0;
@@ -121,7 +121,7 @@ export function mountTimeline(root: HTMLElement): void {
     store.set({ playing: false, T: Math.max(s.dataset.start, Math.min(s.dataset.end, T)) });
   });
 
-  // --- drawing
+  // Drawing
   const redraw = () => draw(canvas, store.get());
   new ResizeObserver(redraw).observe(canvas);
   store.on(['T', 'detections', 'retentionId', 'dataset', 'tzOverride'], (s) => {
@@ -160,9 +160,8 @@ function draw(canvas: HTMLCanvasElement, s: AppState): void {
   const span = Math.max(1, d.end - d.start);
   const x = (t: number) => PAD + ((t - d.start) / span) * (w - 2 * PAD);
   const tz = effectiveTimeZone(s);
-  const css = getComputedStyle(canvas);
-  const ink = css.getPropertyValue('--ink').trim() || '#1f2937';
-  const muted = css.getPropertyValue('--muted').trim() || '#6b7280';
+  const ink = '#1f2937';
+  const muted = '#5b6472';
 
   // Days: weekend shading + midnight ticks + labels
   const days = span / DAY;

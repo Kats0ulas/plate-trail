@@ -6,7 +6,7 @@
 const MIN = 60_000;
 
 export const DETECTION_DEFAULTS = {
-  /** A camera "reads" the vehicle if the GPS path passes within this distance. Spec: 30 m, UI 15–60 m. */
+  /** A camera "reads" the vehicle if the GPS path passes within this distance. Spec: 30 m, UI 15 to 60 m. */
   radiusM: 30,
   radiusMinM: 15,
   radiusMaxM: 60,
@@ -112,7 +112,7 @@ export const INPUT_DEFAULTS = {
 export const SIMULATION_DEFAULTS = {
   /** Junction nodes closer than this are one intersection → one camera. */
   mergeRadiusM: 30,
-  /** Share of junctions that get a hypothetical camera, 0–1. */
+  /** Share of junctions that get a hypothetical camera, 0 to 1. */
   coverage: 1,
   /** No two hypothetical cameras closer than this. 0 = off. */
   minSpacingM: 0,

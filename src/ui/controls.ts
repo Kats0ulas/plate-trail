@@ -12,7 +12,7 @@ export function mountControls(root: HTMLElement, openFilePicker: () => void): vo
   const body = el('div', { class: 'panel-body' });
   root.append(body);
 
-  // --- Retention (the key control)
+  // Retention (the key control)
   const retention = section(
     'Retention period',
     'How long camera reads are kept before deletion. As of ' + RETENTION_AS_OF + '.',
@@ -53,7 +53,7 @@ export function mountControls(root: HTMLElement, openFilePicker: () => void): vo
     true,
   );
 
-  // --- Cameras
+  // Cameras
   const cams = section('Cameras');
   const modeSeg = el('div', {
     class: 'segmented',
@@ -135,7 +135,7 @@ export function mountControls(root: HTMLElement, openFilePicker: () => void): vo
     true,
   );
 
-  // --- Detection
+  // Detection
   const det = section('Detection');
   const radius = range(
     'Read radius',
@@ -147,7 +147,7 @@ export function mountControls(root: HTMLElement, openFilePicker: () => void): vo
   );
   const vehicle = toggle(
     'Vehicles only',
-    'ALPRs read number plates, so only movement at vehicle speed (15–200 km/h) produces reads. Walking and running past a camera produce none.',
+    'ALPRs read number plates, so only movement at vehicle speed (15 to 200 km/h) produces reads. Walking and running past a camera produce none.',
     (v) => store.set({ vehicleOnly: v }),
   );
   const direction = toggle(
@@ -166,7 +166,7 @@ export function mountControls(root: HTMLElement, openFilePicker: () => void): vo
     true,
   );
 
-  // --- View
+  // View
   const view = section('View');
   const showTrack = toggle(
     'Show my real path',
@@ -188,7 +188,7 @@ export function mountControls(root: HTMLElement, openFilePicker: () => void): vo
     true,
   );
 
-  // --- Data
+  // Data
   const data = section('Your data');
   const info = el('div', { class: 'data-info' });
   const loadBtn = el('button', { type: 'button', class: 'btn' }, 'Load other GPX files');
@@ -206,7 +206,7 @@ export function mountControls(root: HTMLElement, openFilePicker: () => void): vo
           ? el(
               'p',
               { class: 'hint' },
-              `Persona: ${s.dataset.persona}. Not a real person — every point is generated.`,
+              `Persona: ${s.dataset.persona}. Not a real person: every point is generated.`,
             )
           : '',
         el(

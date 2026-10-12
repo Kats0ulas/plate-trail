@@ -76,7 +76,7 @@ export type ScheduleRow = {
 
 export type Schedule = {
   rows: ScheduleRow[];
-  /** 0–100: how predictable the routine is (low spread, many days). */
+  /** 0 to 100: how predictable the routine is (low spread, many days). */
   predictability: number;
   confidence: Confidence;
   evidence: string[];

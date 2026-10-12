@@ -39,7 +39,7 @@ badge.addEventListener('click', about.open);
 const topbar = el(
   'header',
   { class: 'topbar' },
-  el('span', { class: 'brand' }, 'Retention Window'),
+  el('span', { class: 'brand' }, 'Plate Trail'),
   badge,
   howBtn,
 );

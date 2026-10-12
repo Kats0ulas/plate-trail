@@ -81,7 +81,7 @@ export function buildSchedule(
   }
 
   // Predictability: how many weekdays show a routine × how tight the times are, pooled over
-  // Monday–Friday (one week of data already shows whether 08:05 is the norm).
+  // Monday to Friday (one week of data already shows whether 08:05 is the norm).
   const weekdayDays = [...days.values()].filter((d) => d.weekday <= 4);
   const pooledStats = KEYS.map((k) =>
     timeStat(weekdayDays.map((d) => d[k]).filter((x): x is number => x !== undefined)),
