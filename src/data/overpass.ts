@@ -95,10 +95,10 @@ export function roadsQuery(cells: readonly string[], cellDeg = OVERPASS_DEFAULTS
 
 // ---------------------------------------------------------------- fetching
 
-/** Wait a little longer than the query's own server-side [timeout:N], then give up on that server. */
+/** Wait a little longer than the query's own server-side [timeout:N], then move to the next server. */
 export function clientTimeoutMs(query: string): number {
   const n = Number(/[timeout:(d+)]/.exec(query)?.[1] ?? 60);
-  return (n + 20) * 1000;
+  return (n + 10) * 1000;
 }
 
 export type FetchLike = (url: string, init: RequestInit) => Promise<Response>;
@@ -176,11 +176,18 @@ export async function overpassFetch(
         clearTimeout(timer);
         opts.signal?.removeEventListener('abort', onAbort);
       }
-      if (res.status === 429 || res.status === 503 || res.status === 504) {
-        lastProblem = `${host} is busy (HTTP ${res.status})`;
-        opts.onStatus?.(`${lastProblem}, retrying…`);
+      if (res.status === 429) {
+        // Rate limited: wait, then try this server again.
+        lastProblem = `${host} asked us to slow down (HTTP 429)`;
+        opts.onStatus?.(`${lastProblem}, waiting…`);
         await sleep(backoffMs * 2 ** attempt, opts.signal);
         continue;
+      }
+      if (res.status === 503 || res.status === 504) {
+        // Overloaded: another server is the better bet.
+        lastProblem = `${host} is overloaded (HTTP ${res.status})`;
+        opts.onStatus?.(`${lastProblem}…`);
+        break;
       }
       if (!res.ok) {
         lastProblem = `${host} answered HTTP ${res.status}`;

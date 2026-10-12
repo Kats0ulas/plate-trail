@@ -197,7 +197,8 @@ async function startDataset(
     cameras: [],
     revealTruth: false,
   });
-  await refreshCameras();
+  // Cameras load in the background (Overpass can be slow); everything else can start now.
+  void refreshCameras();
 }
 
 function fail(e: unknown): void {
@@ -257,7 +258,9 @@ export async function refreshCameras(live = false): Promise<void> {
         source = 'snapshot';
         fetchedAt = snap.fetchedAt;
       } else {
-        status('Asking OpenStreetMap (Overpass) for mapped ALPR cameras in this area…');
+        status(
+          'Asking OpenStreetMap (Overpass) for mapped ALPR cameras in this area… the public servers can take up to a couple of minutes.',
+        );
         realCache = await loadRealCameras(cells, { signal, onStatus: status });
       }
     }
