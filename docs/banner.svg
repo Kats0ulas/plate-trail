@@ -23,7 +23,6 @@
   <g clip-path="url(#card)">
     <rect width="1280" height="400" fill="url(#bg)"/>
 
-    <!-- street grid -->
     <g mask="url(#fade)">
     <g stroke="#ffffff" stroke-opacity="0.06" stroke-width="2" fill="none">
       <path d="M560 40 L1280 0 M560 120 L1280 95 M560 205 L1280 190 M560 290 L1280 285 M560 370 L1280 380"/>
@@ -35,7 +34,6 @@
     </g>
     </g>
 
-    <!-- idle cameras -->
     <g>
       <use href="#cam" x="745" y="112"/><use href="#cam" x="1000" y="99"/><use href="#cam" x="1120" y="190"/>
       <use href="#cam" x="880" y="288"/><use href="#cam" x="1015" y="380"/><use href="#cam" x="1150" y="285"/>
@@ -43,17 +41,14 @@
       <use href="#cam" x="1240" y="300"/><use href="#cam" x="770" y="370"/>
     </g>
 
-    <!-- the drive -->
     <path d="M700 318 C 760 300, 800 250, 860 215 S 960 160, 1010 150 S 1100 120, 1150 92" fill="none" stroke="#D55E00" stroke-width="6" stroke-linecap="round"/>
     <path d="M700 318 C 760 300, 800 250, 860 215 S 960 160, 1010 150 S 1100 120, 1150 92" fill="none" stroke="#f2b134" stroke-opacity="0.35" stroke-width="16" stroke-linecap="round"/>
 
-    <!-- cameras that read the plate -->
     <use href="#hit" x="760" y="296"/>
     <use href="#hit" x="860" y="215"/>
     <use href="#hit" x="1010" y="150"/>
     <use href="#hit" x="1095" y="118"/>
 
-    <!-- inferred places -->
     <g font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif">
       <g transform="translate(690 322)">
         <circle r="19" fill="#0072b2" stroke="#ffffff" stroke-width="3"/>
@@ -70,7 +65,6 @@
       </g>
     </g>
 
-    <!-- timeline with retention window -->
     <g transform="translate(760 352)">
       <rect x="0" y="-6" width="470" height="28" rx="6" fill="#ffffff" fill-opacity="0.05"/>
       <rect x="300" y="-6" width="170" height="28" rx="6" fill="#f2b134" fill-opacity="0.18" stroke="#f2b134" stroke-opacity="0.6" stroke-width="1.5"/>
@@ -84,7 +78,6 @@
       <circle cx="470" cy="-12" r="5" fill="#ffffff"/>
     </g>
 
-    <!-- wordmark -->
     <g font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif">
       <g transform="translate(72 96)">
         <rect width="64" height="64" rx="14" fill="#f2b134" fill-opacity="0.12"/>

@@ -111,9 +111,12 @@ describe('detection', () => {
     for (let i = 0; i < 20; i++)
       for (let j = 0; j < 20; j++)
         cams.push(camera(`${i}-${j}`, LAT + mLat(i * 250), LON0 + mLon(j * 250, LAT)));
+    // The spec's budget is 2 s. Coverage instrumentation slows every line about five times, so the
+    // coverage run only checks a loose bound; plain `npm test` (run before every deploy) checks 2 s.
+    const budgetMs = process.env.COVERAGE_RUN ? 10_000 : 2_000;
     const start = performance.now();
     const reads = detect(pts, cams, P);
     expect(reads.length).toBeGreaterThan(1000);
-    expect(performance.now() - start).toBeLessThan(2000);
+    expect(performance.now() - start).toBeLessThan(budgetMs);
   });
 });
