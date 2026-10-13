@@ -1,6 +1,6 @@
 /**
  * Dev tool: run the full pipeline on a demo persona and print how well the observer does
- * at the end of the data for every retention preset.   npx tsx scripts/eval-demo.ts atlanta
+ * at the end of the data for every retention preset.   npx tsx scripts/eval-demo.ts athens
  */
 import { RETENTION_PRESETS } from '../src/config/retention';
 import { detect } from '../src/engine/detection';

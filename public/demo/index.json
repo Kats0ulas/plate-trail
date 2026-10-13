@@ -1,12 +1,12 @@
 [
  {
-  "slug": "atlanta",
-  "city": "Atlanta, Georgia",
-  "country": "US",
-  "timeZone": "America/New_York",
-  "cameraMode": "real",
-  "persona": "Sam, an office worker living in Brookhaven, Atlanta",
-  "blurb": "Real ALPR locations mapped in OpenStreetMap (one of the densest areas in the US).",
+  "slug": "athens",
+  "city": "Athens, Greece",
+  "country": "GR",
+  "timeZone": "Europe/Athens",
+  "cameraMode": "simulated",
+  "persona": "Nikos, an office worker living in Nea Smyrni, Athens",
+  "blurb": "Hypothetical cameras at every major junction (only a handful of ALPRs are mapped in Athens so far).",
   "files": [
    "2026-08-31.gpx",
    "2026-09-01.gpx",

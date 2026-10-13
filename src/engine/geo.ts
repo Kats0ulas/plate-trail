@@ -82,3 +82,38 @@ export function weightedCentroid(points: readonly LatLon[], weights?: readonly n
 export function midpoint(a: LatLon, b: LatLon): LatLon {
   return { lat: (a.lat + b.lat) / 2, lon: (a.lon + b.lon) / 2 };
 }
+
+/**
+ * Where a track spends most of its time, as [[west, south], [east, north]]: the time-weighted
+ * 5th to 95th percentiles of longitude and latitude, widened by half their span on each side. Fitting every point instead lets one weekend away zoom the map out to the whole region.
+ */
+export function coreBounds(
+  track: readonly (LatLon & { t: number })[],
+  trim = 0.05,
+): [[number, number], [number, number]] {
+  // A point stands for the time until the next one; a long logging gap counts for at most 6 h.
+  const w = track.map((p, i) =>
+    Math.min(Math.max((track[i + 1]?.t ?? p.t) - p.t, 0), 6 * 3_600_000),
+  );
+  const total = w.reduce((s, x) => s + x, 0);
+  const range = (v: (p: LatLon) => number): [number, number] => {
+    const order = track.map((_, i) => i).sort((a, b) => v(track[a]!) - v(track[b]!));
+    if (total === 0) return [v(track[order[0]!]!), v(track[order[order.length - 1]!]!)];
+    let acc = 0;
+    let lo: number | undefined;
+    for (const i of order) {
+      acc += w[i]!;
+      if (lo === undefined && acc >= total * trim) lo = v(track[i]!);
+      if (acc >= total * (1 - trim)) return [lo!, v(track[i]!)];
+    }
+    return [lo ?? v(track[order[0]!]!), v(track[order[order.length - 1]!]!)];
+  };
+  const [west, east] = range((p) => p.lon);
+  const [south, north] = range((p) => p.lat);
+  const mLon = (east - west) / 2;
+  const mLat = (north - south) / 2;
+  return [
+    [west - mLon, south - mLat],
+    [east + mLon, north + mLat],
+  ];
+}

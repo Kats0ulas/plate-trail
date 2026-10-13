@@ -1,0 +1,597 @@
+{
+ "city": "Athens, Greece",
+ "timeZone": "Europe/Athens",
+ "start": 1788123600000,
+ "end": 1791145800000,
+ "persona": "Nikos, an office worker living in Nea Smyrni, Athens",
+ "places": [
+  {
+   "id": "home",
+   "label": "home",
+   "lat": 37.9475,
+   "lon": 23.711,
+   "name": "Home (Nea Smyrni)",
+   "visits": [
+    {
+     "arrive": 1788123600000,
+     "depart": 1788151912000
+    },
+    {
+     "arrive": 1788192917977.2083,
+     "depart": 1788237787000
+    },
+    {
+     "arrive": 1788272500377.8938,
+     "depart": 1788325470000
+    },
+    {
+     "arrive": 1788365682798.4768,
+     "depart": 1788410616000
+    },
+    {
+     "arrive": 1788446249557.8809,
+     "depart": 1788498558000
+    },
+    {
+     "arrive": 1788532072866.0579,
+     "depart": 1788594556000
+    },
+    {
+     "arrive": 1788597922301.0684,
+     "depart": 1788628880000
+    },
+    {
+     "arrive": 1788638782450.9868,
+     "depart": 1788706827000
+    },
+    {
+     "arrive": 1788714374064.448,
+     "depart": 1788757389000
+    },
+    {
+     "arrive": 1788797188054.671,
+     "depart": 1788844132000
+    },
+    {
+     "arrive": 1788877395427.4287,
+     "depart": 1788929245000
+    },
+    {
+     "arrive": 1788970207193.47,
+     "depart": 1789016867000
+    },
+    {
+     "arrive": 1789050776616.343,
+     "depart": 1789102234000
+    },
+    {
+     "arrive": 1789142828438.553,
+     "depart": 1789198526000
+    },
+    {
+     "arrive": 1789202152883.1392,
+     "depart": 1789235655000
+    },
+    {
+     "arrive": 1789244047013.5227,
+     "depart": 1789288775000
+    },
+    {
+     "arrive": 1789304651751.669,
+     "depart": 1789361269000
+    },
+    {
+     "arrive": 1789402185633.7703,
+     "depart": 1789447781000
+    },
+    {
+     "arrive": 1789483119042.3298,
+     "depart": 1789534086000
+    },
+    {
+     "arrive": 1789582687237.6233,
+     "depart": 1789620059000
+    },
+    {
+     "arrive": 1789655474765.1504,
+     "depart": 1789707677000
+    },
+    {
+     "arrive": 1789741256194.152,
+     "depart": 1789799008000
+    },
+    {
+     "arrive": 1789920937184.1091,
+     "depart": 1789966601000
+    },
+    {
+     "arrive": 1790007286240.8271,
+     "depart": 1790053477000
+    },
+    {
+     "arrive": 1790087703803.5315,
+     "depart": 1790138681000
+    },
+    {
+     "arrive": 1790178908623.4985,
+     "depart": 1790224813000
+    },
+    {
+     "arrive": 1790259737293.1738,
+     "depart": 1790311593000
+    },
+    {
+     "arrive": 1790352023679.3098,
+     "depart": 1790409889000
+    },
+    {
+     "arrive": 1790413000677.4062,
+     "depart": 1790443491000
+    },
+    {
+     "arrive": 1790453602542.999,
+     "depart": 1790521725000
+    },
+    {
+     "arrive": 1790529225668.41,
+     "depart": 1790571683000
+    },
+    {
+     "arrive": 1790612308711.5562,
+     "depart": 1790657185000
+    },
+    {
+     "arrive": 1790693085732.1377,
+     "depart": 1790744988000
+    },
+    {
+     "arrive": 1790784263046.649,
+     "depart": 1790830447000
+    },
+    {
+     "arrive": 1790864906139.9766,
+     "depart": 1790916487000
+    },
+    {
+     "arrive": 1790952039916.5366,
+     "depart": 1791012759000
+    },
+    {
+     "arrive": 1791015785536.0603,
+     "depart": 1791106095000
+    },
+    {
+     "arrive": 1791116315584.3628,
+     "depart": 1791145800000
+    }
+   ]
+  },
+  {
+   "id": "work",
+   "label": "work",
+   "lat": 38.0452,
+   "lon": 23.8063,
+   "name": "Office (Kifisias Avenue, Marousi)",
+   "visits": [
+    {
+     "arrive": 1788153399812.3613,
+     "depart": 1788186111000
+    },
+    {
+     "arrive": 1788239203533.8235,
+     "depart": 1788270998000
+    },
+    {
+     "arrive": 1788327069560.8286,
+     "depart": 1788358747000
+    },
+    {
+     "arrive": 1788412108612.0608,
+     "depart": 1788444857000
+    },
+    {
+     "arrive": 1788499926138.401,
+     "depart": 1788530748000
+    },
+    {
+     "arrive": 1788758842958.6826,
+     "depart": 1788789707000
+    },
+    {
+     "arrive": 1788845552078.7878,
+     "depart": 1788876015000
+    },
+    {
+     "arrive": 1788930788193.1375,
+     "depart": 1788963162000
+    },
+    {
+     "arrive": 1789018480796.6873,
+     "depart": 1789049539000
+    },
+    {
+     "arrive": 1789103725391.9602,
+     "depart": 1789135365000
+    },
+    {
+     "arrive": 1789362735646.4482,
+     "depart": 1789394947000
+    },
+    {
+     "arrive": 1789449229509.7458,
+     "depart": 1789481785000
+    },
+    {
+     "arrive": 1789535472314.4543,
+     "depart": 1789570282000
+    },
+    {
+     "arrive": 1789621657347.3196,
+     "depart": 1789654100000
+    },
+    {
+     "arrive": 1789709138576.2305,
+     "depart": 1789739917000
+    },
+    {
+     "arrive": 1789968195481.8147,
+     "depart": 1789999997000
+    },
+    {
+     "arrive": 1790054906457.9363,
+     "depart": 1790086132000
+    },
+    {
+     "arrive": 1790140076649.44,
+     "depart": 1790171734000
+    },
+    {
+     "arrive": 1790226242217.7866,
+     "depart": 1790258330000
+    },
+    {
+     "arrive": 1790313138100.586,
+     "depart": 1790345432000
+    },
+    {
+     "arrive": 1790573199152.5706,
+     "depart": 1790605033000
+    },
+    {
+     "arrive": 1790658581163.0247,
+     "depart": 1790691736000
+    },
+    {
+     "arrive": 1790746345609.795,
+     "depart": 1790777270000
+    },
+    {
+     "arrive": 1790831727658.7402,
+     "depart": 1790863629000
+    },
+    {
+     "arrive": 1790917983147.3752,
+     "depart": 1790950690000
+    }
+   ]
+  },
+  {
+   "id": "gym",
+   "label": "recurring",
+   "lat": 37.92906,
+   "lon": 23.6928,
+   "name": "Gym (Palaio Faliro)",
+   "visits": [
+    {
+     "arrive": 1788187569276.761,
+     "depart": 1788192529000
+    },
+    {
+     "arrive": 1788360434789.5234,
+     "depart": 1788365344000
+    },
+    {
+     "arrive": 1788791355078.1692,
+     "depart": 1788796903000
+    },
+    {
+     "arrive": 1788964892367.752,
+     "depart": 1788969889000
+    },
+    {
+     "arrive": 1789136978136.1272,
+     "depart": 1789142434000
+    },
+    {
+     "arrive": 1789396438219.657,
+     "depart": 1789401862000
+    },
+    {
+     "arrive": 1790001435787.5515,
+     "depart": 1790006981000
+    },
+    {
+     "arrive": 1790173189180.5498,
+     "depart": 1790178508000
+    },
+    {
+     "arrive": 1790346988468.1753,
+     "depart": 1790351713000
+    },
+    {
+     "arrive": 1790606646208.1821,
+     "depart": 1790612000000
+    },
+    {
+     "arrive": 1790778929833.479,
+     "depart": 1790783932000
+    }
+   ]
+  },
+  {
+   "id": "grocery",
+   "label": "recurring",
+   "lat": 37.939,
+   "lon": 23.73,
+   "name": "Supermarket (Agios Dimitrios)",
+   "visits": [
+    {
+     "arrive": 1788594892182.493,
+     "depart": 1788597498000
+    },
+    {
+     "arrive": 1789198866122.3503,
+     "depart": 1789201779000
+    },
+    {
+     "arrive": 1790410220858.9358,
+     "depart": 1790412657000
+    },
+    {
+     "arrive": 1791013164801.2646,
+     "depart": 1791015454000
+    }
+   ]
+  },
+  {
+   "id": "friend",
+   "label": "recurring",
+   "lat": 38.0205,
+   "lon": 23.799,
+   "name": "Friend's place (Chalandri)",
+   "visits": [
+    {
+     "arrive": 1788629778518.8252,
+     "depart": 1788637885000
+    },
+    {
+     "arrive": 1790444547866.216,
+     "depart": 1790452493000
+    }
+   ]
+  },
+  {
+   "id": "park",
+   "label": "recurring",
+   "lat": 37.94104,
+   "lon": 23.69331,
+   "name": "Stavros Niarchos Park (Faliro)",
+   "visits": [
+    {
+     "arrive": 1788707436454.0613,
+     "depart": 1788714031000
+    },
+    {
+     "arrive": 1790522300784.9219,
+     "depart": 1790528881000
+    }
+   ]
+  },
+  {
+   "id": "rally",
+   "label": "rare",
+   "lat": 37.97552,
+   "lon": 23.73495,
+   "name": "Rally at Syntagma Square",
+   "sensitive": true,
+   "visits": [
+    {
+     "arrive": 1789571691499.039,
+     "depart": 1789581944000
+    }
+   ]
+  },
+  {
+   "id": "restaurant",
+   "label": "rare",
+   "lat": 37.97842,
+   "lon": 23.72494,
+   "name": "Taverna (Psyrri)",
+   "visits": [
+    {
+     "arrive": 1789236416087.2622,
+     "depart": 1789243489000
+    }
+   ]
+  },
+  {
+   "id": "beach",
+   "label": "rare",
+   "lat": 37.80916,
+   "lon": 23.7736,
+   "name": "Beach (Vouliagmeni)",
+   "visits": [
+    {
+     "arrive": 1789290412114.1155,
+     "depart": 1789303161000
+    }
+   ]
+  },
+  {
+   "id": "mall",
+   "label": "rare",
+   "lat": 38.0446,
+   "lon": 23.79048,
+   "name": "Shopping centre (The Mall Athens)",
+   "visits": [
+    {
+     "arrive": 1791107323714.1604,
+     "depart": 1791115090000
+    }
+   ]
+  },
+  {
+   "id": "nafplio",
+   "label": "rare",
+   "lat": 37.56602,
+   "lon": 22.79682,
+   "name": "Weekend away (Nafplio)",
+   "visits": [
+    {
+     "arrive": 1789806830089.4539,
+     "depart": 1789913095000
+    }
+   ]
+  }
+ ],
+ "schedule": [
+  {
+   "weekday": 0,
+   "days": 5,
+   "leaveHome": {
+    "meanMin": 476.2,
+    "stdMin": 5.7,
+    "n": 5
+   },
+   "arriveWork": {
+    "meanMin": 501.2,
+    "stdMin": 5.9,
+    "n": 5
+   },
+   "leaveWork": {
+    "meanMin": 1032.7,
+    "stdMin": 6.9,
+    "n": 5
+   },
+   "returnHome": {
+    "meanMin": 1153,
+    "stdMin": 4.3,
+    "n": 5
+   }
+  },
+  {
+   "weekday": 1,
+   "days": 5,
+   "leaveHome": {
+    "meanMin": 474.5,
+    "stdMin": 10.3,
+    "n": 5
+   },
+   "arriveWork": {
+    "meanMin": 498.2,
+    "stdMin": 10.3,
+    "n": 5
+   },
+   "leaveWork": {
+    "meanMin": 1028.9,
+    "stdMin": 9.6,
+    "n": 5
+   },
+   "returnHome": {
+    "meanMin": 1052.7,
+    "stdMin": 8.9,
+    "n": 5
+   }
+  },
+  {
+   "weekday": 2,
+   "days": 5,
+   "leaveHome": {
+    "meanMin": 474.9,
+    "stdMin": 10.2,
+    "n": 5
+   },
+   "arriveWork": {
+    "meanMin": 499.2,
+    "stdMin": 10.4,
+    "n": 5
+   },
+   "leaveWork": {
+    "meanMin": 1037.3,
+    "stdMin": 18.7,
+    "n": 5
+   },
+   "returnHome": {
+    "meanMin": 1172.5,
+    "stdMin": 53.2,
+    "n": 5
+   }
+  },
+  {
+   "weekday": 3,
+   "days": 5,
+   "leaveHome": {
+    "meanMin": 469.3,
+    "stdMin": 10.5,
+    "n": 5
+   },
+   "arriveWork": {
+    "meanMin": 494.1,
+    "stdMin": 11,
+    "n": 5
+   },
+   "leaveWork": {
+    "meanMin": 1028.2,
+    "stdMin": 5.3,
+    "n": 5
+   },
+   "returnHome": {
+    "meanMin": 1050.5,
+    "stdMin": 5,
+    "n": 5
+   }
+  },
+  {
+   "weekday": 4,
+   "days": 5,
+   "leaveHome": {
+    "meanMin": 475.2,
+    "stdMin": 8.7,
+    "n": 5
+   },
+   "arriveWork": {
+    "meanMin": 499.7,
+    "stdMin": 7.8,
+    "n": 5
+   },
+   "leaveWork": {
+    "meanMin": 1027.2,
+    "stdMin": 6.7,
+    "n": 5
+   },
+   "returnHome": {
+    "meanMin": 1087.4,
+    "stdMin": 46.5,
+    "n": 5
+   }
+  },
+  {
+   "weekday": 5,
+   "days": 5,
+   "leaveHome": {
+    "meanMin": 629.1,
+    "stdMin": 34.8,
+    "n": 5
+   }
+  },
+  {
+   "weekday": 6,
+   "days": 5,
+   "leaveHome": {
+    "meanMin": 723.9,
+    "stdMin": 24.3,
+    "n": 2
+   }
+  }
+ ]
+}

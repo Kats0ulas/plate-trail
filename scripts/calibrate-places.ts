@@ -3,7 +3,7 @@
  * keep the one where the car passes a camera close by when arriving and when leaving, so the
  * demo shows clearly what a dense camera network can infer. Prints the best candidates.
  *
- *   npx tsx scripts/calibrate-places.ts atlanta home work,gym,grocery
+ *   npx tsx scripts/calibrate-places.ts athens gym work,home
  */
 import { detect } from '../src/engine/detection';
 import { haversineM, midpoint } from '../src/engine/geo';
