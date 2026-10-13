@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="400" viewBox="0 0 1280 400" role="img" aria-labelledby="t d">
+  <title id="t">Plate Trail</title>
+  <desc id="d">The trail your number plate leaves behind, and how long the cameras keep it. A car's route through a street grid, with licence-plate cameras lighting up as it passes and a retention window on a timeline.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#24304e"/>
+      <stop offset="1" stop-color="#121a2c"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#f2b134" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#f2b134" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="fadeG" x1="540" y1="0" x2="760" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="1"/>
+    </linearGradient>
+    <mask id="fade" maskUnits="userSpaceOnUse" x="0" y="0" width="1280" height="400"><rect width="1280" height="400" fill="url(#fadeG)"/></mask>
+    <clipPath id="card"><rect width="1280" height="400" rx="20"/></clipPath>
+    <g id="cam"><circle r="6" fill="none" stroke="#8a97b3" stroke-opacity="0.55" stroke-width="2"/></g>
+    <g id="hit"><circle r="22" fill="url(#glow)"/><circle r="7" fill="#f2b134" stroke="#121a2c" stroke-width="2"/></g>
+  </defs>
+
+  <g clip-path="url(#card)">
+    <rect width="1280" height="400" fill="url(#bg)"/>
+
+    <!-- street grid -->
+    <g mask="url(#fade)">
+    <g stroke="#ffffff" stroke-opacity="0.06" stroke-width="2" fill="none">
+      <path d="M560 40 L1280 0 M560 120 L1280 95 M560 205 L1280 190 M560 290 L1280 285 M560 370 L1280 380"/>
+      <path d="M640 0 L610 400 M760 0 L745 400 M880 0 L880 400 M1000 0 L1015 400 M1120 0 L1150 400 M1230 0 L1270 400"/>
+    </g>
+    <g stroke="#ffffff" stroke-opacity="0.1" stroke-width="5" fill="none" stroke-linecap="round">
+      <path d="M600 330 C 760 300, 820 210, 940 170 S 1160 70, 1290 40"/>
+      <path d="M700 0 C 760 120, 900 260, 1080 400"/>
+    </g>
+    </g>
+
+    <!-- idle cameras -->
+    <g>
+      <use href="#cam" x="745" y="112"/><use href="#cam" x="1000" y="99"/><use href="#cam" x="1120" y="190"/>
+      <use href="#cam" x="880" y="288"/><use href="#cam" x="1015" y="380"/><use href="#cam" x="1150" y="285"/>
+      <use href="#cam" x="640" y="40"/><use href="#cam" x="1230" y="90"/><use href="#cam" x="880" y="25"/>
+      <use href="#cam" x="1240" y="300"/><use href="#cam" x="770" y="370"/>
+    </g>
+
+    <!-- the drive -->
+    <path d="M700 318 C 760 300, 800 250, 860 215 S 960 160, 1010 150 S 1100 120, 1150 92" fill="none" stroke="#D55E00" stroke-width="6" stroke-linecap="round"/>
+    <path d="M700 318 C 760 300, 800 250, 860 215 S 960 160, 1010 150 S 1100 120, 1150 92" fill="none" stroke="#f2b134" stroke-opacity="0.35" stroke-width="16" stroke-linecap="round"/>
+
+    <!-- cameras that read the plate -->
+    <use href="#hit" x="760" y="296"/>
+    <use href="#hit" x="860" y="215"/>
+    <use href="#hit" x="1010" y="150"/>
+    <use href="#hit" x="1095" y="118"/>
+
+    <!-- inferred places -->
+    <g font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif">
+      <g transform="translate(690 322)">
+        <circle r="19" fill="#0072b2" stroke="#ffffff" stroke-width="3"/>
+        <path d="M-8 1 L0 -7 L8 1 M-5.5 -1 V7 H5.5 V-1" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+      </g>
+      <g transform="translate(1162 86)">
+        <circle r="19" fill="#e69f00" stroke="#ffffff" stroke-width="3"/>
+        <rect x="-8.5" y="-4" width="17" height="11.5" rx="2" fill="#1f2a44"/>
+        <path d="M-3.5 -4 V-7 H3.5 V-4" fill="none" stroke="#1f2a44" stroke-width="2.4"/>
+      </g>
+      <g transform="translate(905 268)">
+        <circle r="19" fill="#cc79a7" stroke="#ffffff" stroke-width="3"/>
+        <path d="M0 -9.5 L2.8 -3 L9.8 -2.6 L4.4 2 L6.1 8.8 L0 5.1 L-6.1 8.8 L-4.4 2 L-9.8 -2.6 L-2.8 -3 Z" fill="#1f2a44"/>
+      </g>
+    </g>
+
+    <!-- timeline with retention window -->
+    <g transform="translate(760 352)">
+      <rect x="0" y="-6" width="470" height="28" rx="6" fill="#ffffff" fill-opacity="0.05"/>
+      <rect x="300" y="-6" width="170" height="28" rx="6" fill="#f2b134" fill-opacity="0.18" stroke="#f2b134" stroke-opacity="0.6" stroke-width="1.5"/>
+      <g stroke="#8a97b3" stroke-opacity="0.45" stroke-width="3" stroke-linecap="round">
+        <path d="M14 2v12M30 2v12M38 2v12M62 2v12M88 2v12M96 2v12M120 2v12M150 2v12M158 2v12M186 2v12M214 2v12M222 2v12M250 2v12M276 2v12M284 2v12"/>
+      </g>
+      <g stroke="#f2b134" stroke-width="3" stroke-linecap="round">
+        <path d="M312 2v12M330 2v12M338 2v12M364 2v12M390 2v12M398 2v12M424 2v12M448 2v12M456 2v12"/>
+      </g>
+      <path d="M470 -12 V28" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+      <circle cx="470" cy="-12" r="5" fill="#ffffff"/>
+    </g>
+
+    <!-- wordmark -->
+    <g font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif">
+      <g transform="translate(72 96)">
+        <rect width="64" height="64" rx="14" fill="#f2b134" fill-opacity="0.12"/>
+        <rect x="8" y="17" width="48" height="30" rx="6" fill="none" stroke="#f2b134" stroke-width="5"/>
+        <rect x="17" y="26" width="19" height="12" rx="2" fill="#f2b134"/>
+        <circle cx="46" cy="32" r="3.8" fill="#f2b134"/>
+      </g>
+      <text x="154" y="148" fill="#ffffff" font-size="64" font-weight="700" letter-spacing="-1">Plate Trail</text>
+      <text x="74" y="214" fill="#d5ddec" font-size="27">The trail your number plate leaves behind,</text>
+      <text x="74" y="250" fill="#d5ddec" font-size="27">and how long the cameras keep it.</text>
+      <text x="75" y="316" fill="#f2b134" font-size="15" font-weight="700" letter-spacing="2.2">ALPR RETENTION SIMULATOR · RUNS IN YOUR BROWSER</text>
+    </g>
+  </g>
+</svg>
