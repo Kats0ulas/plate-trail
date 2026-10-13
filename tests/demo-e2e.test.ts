@@ -30,7 +30,7 @@ function shuffle<T>(xs: T[]): T[] {
 }
 const HOUR = 3_600_000;
 
-// DEMO=atlanta npx vitest run tests/demo-e2e.test.ts  (runs one persona only)
+// DEMO=athens npx vitest run tests/demo-e2e.test.ts  (runs one persona only)
 const only = process.env.DEMO;
 
 for (const entry of loadManifest().filter((e) => !only || e.slug === only)) {

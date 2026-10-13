@@ -20,8 +20,9 @@ export function createMap(container: HTMLElement): MapLibreMap {
   const map = new MapLibreMap({
     container,
     style: BASEMAP_STYLE_URL,
-    center: [-30, 38],
-    zoom: 1.6,
+    // Athens, where the main sample is; loading any track flies the map to it.
+    center: [23.735, 37.975],
+    zoom: 10.5,
     attributionControl: false,
   });
   map.addControl(

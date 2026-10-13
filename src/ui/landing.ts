@@ -3,6 +3,9 @@ import { RETENTION_AS_OF, RETENTION_PRESETS } from '../config/retention';
 import { store } from '../state';
 import { el } from './format';
 
+/** The sample behind the big button; the other samples are offered as links under it. */
+const MAIN_SAMPLE = 'athens';
+
 /** First screen: what the app does in four steps, two buttons, and the privacy promise. */
 export function mountLanding(
   root: HTMLElement,
@@ -84,16 +87,16 @@ export function mountLanding(
   );
   root.append(card);
 
-  demoBtn.addEventListener('click', () => void loadDemo('atlanta'));
+  demoBtn.addEventListener('click', () => void loadDemo(MAIN_SAMPLE));
   fileBtn.addEventListener('click', openFilePicker);
   badge.addEventListener('click', openAbout);
 
   fetchManifest()
     .then((demos: DemoEntry[]) => {
-      const atl = demos.find((d) => d.slug === 'atlanta');
-      if (atl)
-        sampleNote.textContent = `The sample: five weeks of driving by a made-up person (${atl.persona.replace(/^[^,]+, /, '')}), past the licence-plate cameras really mapped there.`;
-      const others = demos.filter((d) => d.slug !== 'atlanta');
+      const main = demos.find((d) => d.slug === MAIN_SAMPLE);
+      if (main)
+        sampleNote.textContent = `The sample: five weeks of driving by a made-up person (${main.persona.replace(/^[^,]+, /, '')}), ${main.cameraMode === 'real' ? 'past the licence-plate cameras really mapped there' : 'past hypothetical cameras at the major junctions, as only a few real ones are mapped there'}.`;
+      const others = demos.filter((d) => d.slug !== MAIN_SAMPLE);
       if (!others.length) return;
       alt.append('Or: ');
       others.forEach((d, i) => {

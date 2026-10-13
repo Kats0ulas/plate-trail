@@ -4,7 +4,7 @@
 
 What would a licence-plate camera network learn about your week, and how much does the data-retention period change that?
 
-![Replay of the Atlanta sample: cameras light up as the car passes, the shaded retention window slides along the timeline, and the observer’s notebook fills in home, work and routine.](docs/replay.gif)
+![Replay of the Athens sample: cameras light up as the car passes, the shaded retention window slides along the timeline, and the observer’s notebook fills in home, work and routine.](docs/replay.gif)
 
 **Website:** https://kats0ulas.github.io/plate-trail/ (online while this repository is public) · runs entirely in your browser · MIT licence
 
@@ -61,16 +61,16 @@ All thresholds live in [`src/engine/params.ts`](src/engine/params.ts), each with
 
 Bills change. The periods are data in [`src/config/retention.ts`](src/config/retention.ts).
 
-### What each period reveals (Atlanta sample, end of the data)
+### What each period reveals (Athens sample, end of the data)
 
 <table>
 <tr><th>Retention</th><th>Camera reads visible</th><th>Real places found (of 11)</th><th>Home located to within</th><th>Routine</th><th>Rally found?</th></tr>
-<tr><td>48 h (Ban Flock Act)</td><td align="right">75</td><td align="right">1</td><td align="right">121 m</td><td>none</td><td>no</td></tr>
-<tr><td>7 d (Flock default)</td><td align="right">503</td><td align="right">3</td><td align="right">121 m</td><td>Medium confidence</td><td>no</td></tr>
-<tr><td>10 d (Stop Flock Abuse Act)</td><td align="right">729</td><td align="right">4</td><td align="right">121 m</td><td>Medium confidence</td><td>no</td></tr>
-<tr><td>21 d (Connecticut)</td><td align="right">1,639</td><td align="right">7</td><td align="right">121 m</td><td>High confidence</td><td>yes</td></tr>
-<tr><td>30 d (Flock, before Aug 2026)</td><td align="right">2,270</td><td align="right">8</td><td align="right">121 m</td><td>High confidence</td><td>yes</td></tr>
-<tr><td>Forever (No limit)</td><td align="right">2,702</td><td align="right">8</td><td align="right">121 m</td><td>High confidence</td><td>yes</td></tr>
+<tr><td>48 h (Ban Flock Act)</td><td align="right">132</td><td align="right">2</td><td align="right">177 m</td><td>none</td><td>no</td></tr>
+<tr><td>7 d (Flock default)</td><td align="right">780</td><td align="right">4</td><td align="right">143 m</td><td>Medium confidence</td><td>no</td></tr>
+<tr><td>10 d (Stop Flock Abuse Act)</td><td align="right">1,056</td><td align="right">5</td><td align="right">111 m</td><td>Medium confidence</td><td>no</td></tr>
+<tr><td>21 d (Connecticut)</td><td align="right">2,388</td><td align="right">7</td><td align="right">131 m</td><td>Medium confidence</td><td>yes</td></tr>
+<tr><td>30 d (Flock, before Aug 2026)</td><td align="right">3,348</td><td align="right">11</td><td align="right">122 m</td><td>High confidence</td><td>yes</td></tr>
+<tr><td>Forever (No limit)</td><td align="right">3,992</td><td align="right">11</td><td align="right">123 m</td><td>High confidence</td><td>yes</td></tr>
 </table>
 
 The same observer, at the same moment (the end of the data), with different retention. The home is found even from 48 hours of reads: two nights are enough. The workplace and routine need about a week, and the rally only shows up once retention reaches back about 18 days. With five weeks of data, 30 days and “forever” look alike; with months of history the gap keeps growing. Regenerate with `npx tsx scripts/eval-demo.ts`.
@@ -79,7 +79,7 @@ The same observer, at the same moment (the end of the data), with different rete
 
 Most visitors will not upload their own location history, so the samples make the point in one click. All three are **synthetic**: invented people, five weeks of driving and walking generated along real roads (routes from the public OSRM demo server, then GPS noise and sampling), committed as one GPX file per day with a `truth.json` of the persona’s real places and schedule.
 
-- **Atlanta, Georgia (real cameras).** One of the densest areas of ALPRs mapped in OpenStreetMap (about 3,500 in the area the persona drives through). Home in Brookhaven, office at Perimeter Center, gym, weekly supermarket, a friend’s place, a park, a weekend at Lake Lanier, and on Wednesday 16 September, about 18 days before the data ends, **a rally at the Georgia State Capitol**. It is visible with 21 days, 30 days or unlimited retention, and gone at 10 days.
+- **Athens, Greece (simulated cameras; the main sample).** Nikos lives in Nea Smyrni and works on Kifisias Avenue in Marousi: gym evenings in Palaio Faliro, Saturday shopping in Agios Dimitrios, a friend in Chalandri, Sunday walks at the Stavros Niarchos park, a beach day at Vouliagmeni, a weekend in Nafplio, and on Wednesday 16 September, about 18 days before the data ends, **a rally at Syntagma Square**. It is visible with 21 days, 30 days or unlimited retention, and gone at 10 days. OpenStreetMap lists only a handful of ALPRs in Athens so far (9 in the area the persona drives through as of October 2026, two of them at Syntagma), so the sample places a hypothetical camera at every major junction.
 - **Thessaloniki, Greece (simulated cameras).** Few ALPRs are mapped in Greece, so this one asks “what if every major junction had one?”.
 - **Patras, Greece (simulated cameras).** Dimitra lives in Zarouchleika and works at the University of Patras campus in Rio: gym evenings in Agyia, Saturday shopping in Perivola, Sunday walks at the Plaz, a weekend in Nafpaktos across the Rio Antirrio bridge, and an evening rally at Plateia Georgiou A’ about 18 days before the data ends.
 
@@ -108,7 +108,7 @@ npm run build          # static site in dist/
 npm run demo           # regenerate the sample personas and OSM snapshots (uses OSRM and Overpass)
 ```
 
-`npx tsx scripts/make-demo.ts atlanta` regenerates one city. The saved camera and junction snapshots are reused while they cover the track; add `refresh-osm` to download them again, or `no-osm` to skip them. Routing responses are cached in `scripts/.cache/`. `scripts/eval-demo.ts` prints how the observer does for every retention period.
+`npx tsx scripts/make-demo.ts athens` regenerates one city. The saved camera and junction snapshots are reused while they cover the track; add `refresh-osm` to download them again, or `no-osm` to skip them. Routing responses are cached in `scripts/.cache/`. `scripts/eval-demo.ts` prints how the observer does for every retention period.
 
 **Tech:** Vite and TypeScript (strict), no UI framework (a 40-line typed store), MapLibre GL JS, OpenFreeMap (Positron), Turf (`@turf/clusters-dbscan`), `@tmcw/togeojson` (TCX and KML), Flatbush, Vitest, ESLint and Prettier, GitHub Actions to GitHub Pages.
 

@@ -1,8 +1,8 @@
 import type { GeoJSONSource, Map as MapLibreMap } from 'maplibre-gl';
-import { LngLatBounds, Marker } from 'maplibre-gl';
+import { Marker } from 'maplibre-gl';
 import type { Feature, FeatureCollection, LineString, Point, Polygon } from 'geojson';
 import { presetById } from '../config/retention';
-import { haversineM } from '../engine/geo';
+import { coreBounds, haversineM } from '../engine/geo';
 import { ageFraction, lowerBound, upperBound, windowStart } from '../engine/retention';
 import { effectiveTimeZone, store, type AppState } from '../state';
 import { LABEL_COLORS, LABEL_NAMES, formatDistance, labelIcon } from '../ui/format';
@@ -171,10 +171,7 @@ function wire(map: MapLibreMap): void {
       };
       src(map, 'track').setData(track.length > 1 ? data : EMPTY);
       if (track.length > 1) {
-        const b = new LngLatBounds();
-        for (let i = 0; i < track.length; i += Math.max(1, Math.floor(track.length / 2000)))
-          b.extend([track[i]!.lon, track[i]!.lat]);
-        map.fitBounds(b, {
+        map.fitBounds(coreBounds(track), {
           padding: fitPadding(),
           duration: reducedMotion() ? 0 : 900,
           maxZoom: 13,

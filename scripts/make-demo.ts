@@ -3,7 +3,7 @@
  * real roads, written as one GPX file per day, plus truth.json (what the person really did).
  *
  *   npm run demo                         # all cities
- *   npx tsx scripts/make-demo.ts atlanta     # one city
+ *   npx tsx scripts/make-demo.ts athens      # one city
  *   npx tsx scripts/make-demo.ts no-osm      # don't touch the OSM camera/junction snapshots
  *   npx tsx scripts/make-demo.ts refresh-osm # re-download them even if they cover the track
  *
@@ -114,115 +114,6 @@ const jitter = (rng: Rng, base: number, plusMinus: number) =>
   base + Math.round(rng.range(-plusMinus, plusMinus));
 
 // The personas
-
-const ATLANTA: CityDef = {
-  slug: 'atlanta',
-  city: 'Atlanta, Georgia',
-  country: 'US',
-  timeZone: 'America/New_York',
-  cameraMode: 'real',
-  persona: 'Sam, an office worker living in Brookhaven, Atlanta',
-  blurb: 'Real ALPR locations mapped in OpenStreetMap (one of the densest areas in the US).',
-  places: {
-    home: { name: 'Home (Brookhaven)', label: 'home', at: [33.87711, -84.32679] },
-    work: {
-      name: 'Office (Perimeter Center)',
-      label: 'work',
-      at: [33.92505, -84.34265],
-      park: [33.92455, -84.34195],
-    },
-    gym: {
-      name: 'Gym (Town Brookhaven)',
-      label: 'recurring',
-      at: [33.86075, -84.33805],
-      park: [33.86035, -84.33745],
-    },
-    grocery: {
-      name: 'Supermarket (Chamblee)',
-      label: 'recurring',
-      at: [33.88765, -84.30355],
-      park: [33.88725, -84.30305],
-    },
-    friend: { name: "Friend's place (Buckhead)", label: 'recurring', at: [33.84449, -84.36988] },
-    park: {
-      name: 'Piedmont Park (north meadow)',
-      label: 'recurring',
-      at: [33.78855, -84.37255],
-      park: [33.79115, -84.37395],
-    },
-    rally: {
-      name: 'Rally at the State Capitol (Liberty Plaza)',
-      label: 'rare',
-      at: [33.74895, -84.38905],
-      park: [33.74893, -84.38878],
-      sensitive: true,
-    },
-    restaurant: {
-      name: 'Restaurant (Buckhead Village)',
-      label: 'rare',
-      at: [33.83905, -84.37905],
-      park: [33.83955, -84.37845],
-    },
-    decatur: {
-      name: 'Decatur Square',
-      label: 'rare',
-      at: [33.77465, -84.29625],
-      park: [33.77405, -84.29505],
-    },
-    mall: {
-      name: 'Atlantic Station',
-      label: 'rare',
-      at: [33.79305, -84.39605],
-      park: [33.79205, -84.39505],
-    },
-    lake: { name: 'Weekend cabin (Lake Lanier)', label: 'rare', at: [34.20805, -84.08705] },
-  },
-  plan(day, rng) {
-    const legs: Leg[] = [];
-    const wd = day.weekday;
-    if (day.iso === '2026-09-12') return [{ to: 'lake', leave: jitter(rng, hm(9, 40), 10) }];
-    if (day.iso === '2026-09-13') return [{ to: 'home', leave: jitter(rng, hm(15, 30), 15) }];
-    if (wd <= 4) {
-      legs.push({ to: 'work', leave: jitter(rng, hm(8, 5), 15) });
-      const leaveWork = jitter(rng, hm(17, 15), 15);
-      if (day.iso === '2026-09-16') {
-        // The one-off: a rally downtown on a Wednesday evening, ~18 days before the data ends.
-        legs.push({ to: 'rally', leave: leaveWork });
-        legs.push({ to: 'home', leave: jitter(rng, hm(20, 45), 5) });
-      } else if (wd === 0 || wd === 2 || (wd === 4 && day.week % 2 === 0)) {
-        legs.push({ to: 'gym', leave: leaveWork });
-        legs.push({ to: 'home', leave: leaveWork + 25 + Math.round(rng.range(60, 75)) });
-      } else {
-        legs.push({ to: 'home', leave: leaveWork });
-      }
-    } else if (wd === 5) {
-      const shop = jitter(rng, hm(10, 30), 20);
-      legs.push(
-        { to: 'grocery', leave: shop },
-        { to: 'home', leave: shop + Math.round(rng.range(50, 65)) },
-      );
-      if (day.week === 0 || day.week === 3) {
-        const t = jitter(rng, hm(19, 15), 10);
-        legs.push({ to: 'friend', leave: t }, { to: 'home', leave: t + 150 });
-      } else if (day.week === 2) {
-        const t = jitter(rng, hm(19, 0), 10);
-        legs.push({ to: 'restaurant', leave: t }, { to: 'home', leave: t + 120 });
-      }
-    } else {
-      if (day.week === 0 || day.week === 3) {
-        const t = jitter(rng, hm(13, 40), 10);
-        legs.push({ to: 'park', leave: t }, { to: 'home', leave: t + 135 });
-      } else if (day.week === 2) {
-        const t = jitter(rng, hm(12, 50), 10);
-        legs.push({ to: 'decatur', leave: t }, { to: 'home', leave: t + 160 });
-      } else if (day.week === 4) {
-        const t = jitter(rng, hm(14, 40), 10);
-        legs.push({ to: 'mall', leave: t }, { to: 'home', leave: t + 140 });
-      }
-    }
-    return legs;
-  },
-};
 
 const THESSALONIKI: CityDef = {
   slug: 'thessaloniki',
@@ -395,7 +286,94 @@ const PATRAS: CityDef = {
   },
 };
 
-export const CITIES = [ATLANTA, THESSALONIKI, PATRAS];
+const ATHENS: CityDef = {
+  slug: 'athens',
+  city: 'Athens, Greece',
+  country: 'GR',
+  timeZone: 'Europe/Athens',
+  cameraMode: 'simulated',
+  persona: 'Nikos, an office worker living in Nea Smyrni, Athens',
+  blurb:
+    'Hypothetical cameras at every major junction (only a handful of ALPRs are mapped in Athens so far).',
+  places: {
+    home: { name: 'Home (Nea Smyrni)', label: 'home', at: [37.9475, 23.711] },
+    work: {
+      name: 'Office (Kifisias Avenue, Marousi)',
+      label: 'work',
+      at: [38.0452, 23.8063],
+      park: [38.04495, 23.80575],
+    },
+    gym: { name: 'Gym (Palaio Faliro)', label: 'recurring', at: [37.92906, 23.6928] },
+    grocery: { name: 'Supermarket (Agios Dimitrios)', label: 'recurring', at: [37.939, 23.73] },
+    friend: { name: "Friend's place (Chalandri)", label: 'recurring', at: [38.0205, 23.799] },
+    park: {
+      name: 'Stavros Niarchos Park (Faliro)',
+      label: 'recurring',
+      at: [37.94104, 23.69331],
+      park: [37.9405, 23.696],
+    },
+    rally: {
+      name: 'Rally at Syntagma Square',
+      label: 'rare',
+      at: [37.97552, 23.73495],
+      park: [37.9775, 23.7385],
+      sensitive: true,
+    },
+    restaurant: { name: 'Taverna (Psyrri)', label: 'rare', at: [37.97842, 23.72494] },
+    beach: { name: 'Beach (Vouliagmeni)', label: 'rare', at: [37.80916, 23.7736] },
+    mall: { name: 'Shopping centre (The Mall Athens)', label: 'rare', at: [38.0446, 23.79048] },
+    nafplio: { name: 'Weekend away (Nafplio)', label: 'rare', at: [37.56602, 22.79682] },
+  },
+  plan(day, rng) {
+    const legs: Leg[] = [];
+    const wd = day.weekday;
+    if (day.iso === '2026-09-19') return [{ to: 'nafplio', leave: jitter(rng, hm(9, 30), 10) }];
+    if (day.iso === '2026-09-20') return [{ to: 'home', leave: jitter(rng, hm(17, 0), 15) }];
+    if (wd <= 4) {
+      legs.push({ to: 'work', leave: jitter(rng, hm(7, 55), 15) });
+      const leaveWork = jitter(rng, hm(17, 10), 15);
+      if (day.iso === '2026-09-16') {
+        // The one-off: an evening rally at Syntagma, ~18 days before the data ends.
+        legs.push({ to: 'rally', leave: jitter(rng, hm(17, 50), 5) });
+        legs.push({ to: 'home', leave: jitter(rng, hm(21, 0), 5) });
+      } else if (wd === 0 || wd === 2 || (wd === 4 && day.week % 2 === 1)) {
+        legs.push({ to: 'gym', leave: leaveWork });
+        legs.push({ to: 'home', leave: leaveWork + 45 + Math.round(rng.range(60, 75)) });
+      } else {
+        legs.push({ to: 'home', leave: leaveWork });
+      }
+    } else if (wd === 5) {
+      const shop = jitter(rng, hm(10, 45), 20);
+      legs.push(
+        { to: 'grocery', leave: shop },
+        { to: 'home', leave: shop + Math.round(rng.range(45, 60)) },
+      );
+      // (week 2's weekend is the Nafplio trip)
+      if (day.week === 0 || day.week === 3) {
+        const t = jitter(rng, hm(20, 30), 10);
+        legs.push({ to: 'friend', leave: t }, { to: 'home', leave: t + 150 });
+      } else if (day.week === 1) {
+        const t = jitter(rng, hm(21, 0), 10);
+        legs.push({ to: 'restaurant', leave: t }, { to: 'home', leave: t + 130 });
+      }
+    } else {
+      if (day.week === 0 || day.week === 3) {
+        const t = jitter(rng, hm(18, 0), 10);
+        legs.push({ to: 'park', leave: t }, { to: 'home', leave: t + 120 });
+      } else if (day.week === 1) {
+        const t = jitter(rng, hm(11, 30), 10);
+        legs.push({ to: 'beach', leave: t }, { to: 'home', leave: t + 240 });
+      } else if (day.week === 4) {
+        const t = jitter(rng, hm(12, 30), 10);
+        legs.push({ to: 'mall', leave: t }, { to: 'home', leave: t + 150 });
+      }
+    }
+    return legs;
+  },
+};
+
+/** The first city is the main sample on the start screen. */
+export const CITIES = [ATHENS, THESSALONIKI, PATRAS];
 
 // Track synthesis
 
@@ -486,7 +464,7 @@ function dayInfo(index: number): DayInfo {
 async function generate(city: CityDef) {
   console.log(`\n${city.city}`);
   const rng = makeRng(
-    { atlanta: 20260831, thessaloniki: 20260901, patras: 20260902 }[city.slug] ?? 1,
+    { thessaloniki: 20260901, patras: 20260902, athens: 20260903 }[city.slug] ?? 1,
   );
   const rec = new Recorder(rng);
   const stays: Stay[] = [];
